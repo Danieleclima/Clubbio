@@ -1,1 +1,1 @@
-navigator.serviceWorker.register('/offline.js', {scope: '/'});
+// navigator.serviceWorker.register('/offline.js', {scope: '/'});

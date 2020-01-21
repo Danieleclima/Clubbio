@@ -1,43 +1,53 @@
-var CACHE = 'cache-and-update';
+// var CACHE = 'cache-update-and-refresh';
 
-// On install, cache some resources
-self.addEventListener('install', function(evt) {
-    console.log('The service worker is being installed.');
+// self.addEventListener('install', function(evt) {
+//   console.log('The service worker is being installed.');
 
-    // Ask the service worker to keep installing until the returning promise resolves.
-    evt.waitUntil(precache());
-});
+//   evt.waitUntil(caches.open(CACHE).then(function (cache) {
+//     cache.addAll([
+//       './controlled.html',
+//       './asset'
+//     ]);
+//   }));
+// });
 
-// On fetch, use cache only strategy.
-self.addEventListener('fetch', function(evt) {
-    console.log('The service worker is serving the asset.');
-    evt.respondWith(fromCache(evt.request));
-    evt.waitUntil(update(evt.request));
-});
+// self.addEventListener('fetch', function(evt) {
+//   console.log('The service worker is serving the asset.');
+//   evt.respondWith(fromCache(evt.request));
+//   evt.waitUntil(
+//     update(evt.request)
+//     .then(refresh)
+//     );
+//   });
 
-// Open a cache and use 'addAll()' with an array of assest to add all of them
-// to the cache. Return a promise resolving when all the assets are added.
+//   function fromCache(request) {
+//     return caches.open(CACHE).then(function (cache) {
+//       return cache.match(request);
+//     });
+//   }
 
-function precache() {
-    return caches.open(CACHE).then(function (cache) {
-      return cache.addAll([
-        './index.html',
-      ]);
-    });
-  }
+//   function update(request) {
+//     return caches.open(CACHE).then(function (cache) {
+//       return fetch(request).then(function (response) {
+//         return cache.put(request, response.clone()).then(function () {
+//           return response;
+//         });
+//       });
+//     });
+//   }
 
-  function fromCache(request) {
-    return caches.open(CACHE).then(function (cache) {
-      return cache.match(request).then(function (matching) {
-        return matching || Promise.reject('no-match');
-      });
-    });
-  }
+//   function refresh(response) {
+//     return self.clients.matchAll().then(function (clients) {
+//       clients.forEach(function (client) {
 
-  function update(request) {
-    return caches.open(CACHE).then(function (cache) {
-      return fetch(request).then(function (response) {
-        return cache.put(request, response);
-      });
-    });
-  }
+//         var message = {
+//           type: 'refresh',
+//           url: response.url,
+
+//           eTag: response.headers.get('ETag')
+//       };
+
+//       client.postMessage(JSON.stringify(message));
+//     });
+//   });
+// }

@@ -1,8 +1,7 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from 'react';
+import NightClubs from './containers/NightClubs'
 
-function App() {
+class App extends Component {
 
 // const apicall = () => {
 //   let proxyUrl = 'https://cors-anywhere.herokuapp.com/'
@@ -16,26 +15,13 @@ function App() {
 //   console.log(res)
 // })
 // }
-  return (
-    
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-      {apicall()}
-    </div>
-  );
-}
 
+render(){
+  return(
+    <div>
+      <NightClubs/>
+    </div>
+  )
+}
+}
 export default App;
