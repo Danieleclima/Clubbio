@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
+import {Link} from 'react-router-dom'
 
 class NightClubCard extends Component {
 
     render(){
-        return (
+        return(
            <div>
-        <h3>{this.props.nightclub.name}</h3>
-           </div> 
+            <Link to={`/nightclubs/${this.props.nightclub.name}`}>{this.props.nightclub.name}</Link> 
+           </div>
         )
     }
-
 }
 
 export default NightClubCard

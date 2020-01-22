@@ -20,8 +20,8 @@ function nightClubsReducer(state = {nightclubs: []}, action) {
 function userReducer(state = {user: []}, action){
     switch (action.type){
         case 'ADD_USER_LOCATION':
-            debugger
-            let coord = action.coords
+            // debugger
+            let coord = action.location.coords
             return {...state.user, coord}
         
         default:

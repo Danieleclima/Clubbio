@@ -6,37 +6,48 @@ import {addUserLocation} from '../actions/User'
 
 class NightClubs extends Component {
 
+  constructor(props) {
+    super(props);
+    this.getLocation()
+    
+    
+  }
+
+// render NightClubCard component
     renderNightClubs = () => {
         if(this.props.nightclubs){
         return this.props.nightclubs.map(n => {
+            debugger
             return <div><NightClubCard nightclub={n}/></div>
           })} else { return <div></div>}
       }
     
     componentDidMount(){
-        this.props.fetchNightClubs()
     }
 
     // get location from browser
     getLocation = () => {
         if (navigator.geolocation) {
-          navigator.geolocation.getCurrentPosition(this.getCoordinates);
+          navigator.geolocation.getCurrentPosition(this.getCoordinates, null, {enableHighAccuracy: true});
         } else {
           alert("Geolocation is not supported by this browser.");
         }
       }
 
+      // pass coordinates to action
       getCoordinates = (position) => {
         console.log(position)
+        // debugger
         this.props.addUserLocation(position)
       }
 
     render(){
-        return(
+        return(  
         <div>
           <h2>NightClubs</h2>
             <div>{this.renderNightClubs()}</div>
-            <div>{() => {this.getLocation()}}</div>
+            <div>{this.props.fetchNightClubs(this.props.user.coord)}</div>
+          
         </div>
         )
     }
