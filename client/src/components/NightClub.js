@@ -6,7 +6,6 @@ export default class NightClub extends Component {
     render(){
         return(
             <div>
-                
                 Nightclub
             </div>
         )
