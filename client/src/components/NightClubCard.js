@@ -5,8 +5,8 @@ class NightClubCard extends Component {
 
     render(){
         return(
-           <div>
-            <Link to={`/nightclubs/${this.props.nightclub.name}`}>{this.props.nightclub.name}</Link> 
+           <div key={this.props.nightclub.id}>
+            <Link to={`/nightclubs/${this.props.nightclub.id}`}>{this.props.nightclub.name}</Link> 
            </div>
         )
     }
