@@ -5,9 +5,13 @@ export default class Homepage extends Component {
 
     render(){
         return(
-            <div>
+            <React.Fragment>
+                <header></header>
+                <main>
                 <NightClubs/>
-            </div>
+                </main>
+                <footer></footer>
+            </React.Fragment>
         )
     }
 }

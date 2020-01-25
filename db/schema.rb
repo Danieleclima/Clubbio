@@ -10,9 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_01_23_210320) do
+ActiveRecord::Schema.define(version: 2020_01_23_213025) do
 
-  create_table "night_clubs", force: :cascade do |t|
+  create_table "nightclubs", force: :cascade do |t|
     t.string "name"
     t.string "address"
     t.float "rating"
@@ -21,6 +21,17 @@ ActiveRecord::Schema.define(version: 2020_01_23_210320) do
     t.string "gid"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "reviews", force: :cascade do |t|
+    t.integer "nightclub_id"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "description"
+    t.date "date"
+    t.index ["nightclub_id"], name: "index_reviews_on_nightclub_id"
+    t.index ["user_id"], name: "index_reviews_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|

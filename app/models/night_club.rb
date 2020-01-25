@@ -1,2 +1,0 @@
-class NightClub < ApplicationRecord
-end
