@@ -4,3 +4,10 @@ export const addUserLocation = location => {
         location: location
     }
 }
+
+export const createUser = user => {
+    return {
+        type: 'CREATE_USER',
+        user
+    }
+}

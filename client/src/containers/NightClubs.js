@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import NightClubCard from '../components/NightClubCard'
 import {fetchNightClubs} from '../actions/NightClubs';
 import {addUserLocation} from '../actions/User'
+import {Container, Row, Col} from 'react-bootstrap';
 
 class NightClubs extends Component {
 
@@ -16,10 +17,9 @@ class NightClubs extends Component {
 // render NightClubCard component
     renderNightClubs = () => {
         if(this.props.nightclubs){
-        return this.props.nightclubs.map(n => {
-            debugger
-            return <div><NightClubCard nightclub={n}/></div>
-          })} else { return <div></div>}
+        return <Container> <Row className="justify-content-between"> {this.props.nightclubs.slice(0,6).map(n => {
+            return <Col className="col-md-4 col-sm-6 my-3"> <NightClubCard nightclub={n}/> </Col>
+          })}  </Row> </Container>} else { return <div></div>} 
       }
     
     componentDidMount(){
@@ -42,15 +42,19 @@ class NightClubs extends Component {
       }
 
     render(){
-        return(  
-        <div>
-          <h2>NightClubs</h2>
-            <div>{this.renderNightClubs()}</div>
+        return(
+          <div>
+          <Container>
+            <Row height="733" className="justify-content-center">
+              <Col>
+              <h2>NightClubs near you</h2>
+              </Col>
+            </Row>
+          </Container>
+            {this.renderNightClubs()}
             <div>{this.props.fetchNightClubs(this.props.user.coord)}</div>
-          
-        </div>
-        )
-    }
+            </div>
+        )}
 }
 
 const mapStateToProps = (state) => {

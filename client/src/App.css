@@ -1,3 +1,12 @@
 .Clubbio-color {
   background-color: #662D8F;
 }
+
+.Layout {
+  font-family: 'Exo 2', sans-serif;
+  background-color: #FCFCFC;
+}
+
+.fullview_component {
+  min-height: 100vh;
+}
