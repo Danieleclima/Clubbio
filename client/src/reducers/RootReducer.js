@@ -1,14 +1,6 @@
 import {combineReducers} from "redux"
 
-const options = (method, formData) => {
-  return {  method: method,
-            headers: {
-                'Content-Type': "application/json",
-                Accept: "application/json"
-            },
-            body: JSON.stringify(formData) 
-        }   
-}
+
 
 const rootReducer = combineReducers({
     nightclubs: nightClubsReducer,
@@ -18,7 +10,7 @@ const rootReducer = combineReducers({
 export default rootReducer
 
 function nightClubsReducer(state = {nightclubs: []}, action) {
-    debugger
+    
     switch (action.type){
         case 'ADD_NIGHTCLUBS':
             let nightclubs = action.nightclubs
@@ -34,9 +26,9 @@ function userReducer(state = {user: []}, action){
             let coord = action.location.coords
             return {...state.user, coord}
         case 'CREATE_USER':
-                // debugger
+            debugger
             let current_user = action.user
-            fetch('http://localhost:3001/users', options("POST", current_user))
+            // fetch('http://localhost:3001/users', options("POST", current_user))
             return {...state.user, current_user}        
         
         default:

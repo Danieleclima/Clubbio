@@ -9,4 +9,29 @@
 
 .fullview_component {
   min-height: 100vh;
+  padding: 6%;
+}
+
+.equal-height-columns {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.equal-column-content {
+  height: 100vh;
+  max-height: 20px;
+}
+
+.card-img-top {
+  width: 100%;
+  height: 15vw;
+  object-fit: cover;
+}
+
+.Homepage-title {
+  height: 3vh;
+  padding: 2%;
 }

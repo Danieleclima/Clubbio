@@ -8,13 +8,7 @@ const Layout = (props) => (
     <header>
     <NavigationBar />
     </header>
-    <Container fluid={true} className="Layout">
-    <Row>
-    <Col className="col-xs-12">
         {props.children}
-    </Col>
-    </Row>
-    </Container>
     </React.Fragment>
 )
 
