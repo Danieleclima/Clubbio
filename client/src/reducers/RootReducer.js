@@ -19,16 +19,16 @@ function nightClubsReducer(state = {nightclubs: []}, action) {
         return state
 }}
 
-function userReducer(state = {user: []}, action){
+function userReducer(state = {user: {logged_in: false}}, action){
     switch (action.type){
         case 'ADD_USER_LOCATION':
             // debugger
-            let coord = action.location.coords
-            return {...state.user, coord}
+            let coords = action.location.coords
+            return {...state.user, coords}
         case 'CREATE_USER':
             debugger
             let current_user = action.user
-            // fetch('http://localhost:3001/users', options("POST", current_user))
+            state.logged_in = true
             return {...state.user, current_user}        
         
         default:

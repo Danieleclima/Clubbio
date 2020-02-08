@@ -1,9 +1,11 @@
-const options = (method, formData) => {
-    return {  method: method,
+const options = (request, formData) => {
+    return {  method: request,
+            //   mode:'no-cors',
               headers: {
                   'Content-Type': "application/json",
                   Accept: "application/json"
               },
+            //   Origin: "http://localhost:3000/signup",
               body: JSON.stringify(formData) 
           }   
   }
@@ -19,12 +21,18 @@ export const addUserLocation = location => {
 export const createUser = user => {
     return (dispatch) => {
         if (user){
+        debugger
         dispatch ({type: 'START_CREATING_USER'});
-        let proxyUrl = 'https://cors-anywhere.herokuapp.com/';
+        // let proxyUrl = 'https://cors-anywhere.herokuapp.com/';
         let targetUrl = `http://localhost:3001/users`;
-        fetch(proxyUrl + targetUrl, options("POST", user))
-        .then(user => {
+        fetch(targetUrl, options("POST", {user: user}))
+        .then(u => {
+            return u.json()
+        })
+        .then(current_user => {
             debugger
-            dispatch({type: 'CREATE_USER', user: user})})    
-    }}
+            dispatch({type: 'CREATE_USER', user: current_user})    
+        })
+}
+}
 }

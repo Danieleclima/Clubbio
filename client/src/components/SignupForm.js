@@ -14,7 +14,9 @@ class SignUpForm extends Component {
         city: '',
         country: '',
         postcode: '',
-        email: ''
+        email: '',
+        password: '',
+        password_confirmation: ''
     }
 
     handleOnChange = event => {
@@ -35,7 +37,9 @@ class SignUpForm extends Component {
             city: '',
             country: '',
             postcode: '',
-            email: ''
+            email: '',
+            password: '',
+            password_confirmation: ''
         })
     }
 
@@ -83,6 +87,7 @@ class SignUpForm extends Component {
                                             type="text"
                                             placeholder="Username"
                                             name="username"
+                                            value={this.state.username}
                                             aria-describedby="inputGroupPrepend"
                                             required
                                         />
@@ -100,6 +105,21 @@ class SignUpForm extends Component {
                                         type="password"
                                         name="password"
                                         placeholder="Password"
+                                        value={this.state.password}
+                                    />
+                                    <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
+                                </Form.Group>
+
+                                
+                                <Form.Group as={Col} md="4" controlId="validationCustom03">
+                                    <Form.Label>Password Confirmation</Form.Label>
+                                    <Form.Control
+                                        onChange={this.handleOnChange}
+                                        required
+                                        type="password"
+                                        name="password_confirmation"
+                                        placeholder="Confirm password"
+                                        value={this.state.password_confirmation}
                                     />
                                     <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
                                 </Form.Group>

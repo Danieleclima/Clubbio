@@ -1,3 +1,5 @@
+# require 'pry'
+
 class UsersController < ApplicationController
 
     def index
@@ -7,6 +9,11 @@ class UsersController < ApplicationController
 
     def create
         binding.pry
+        user= User.create(user_params)
+        render json: user
     end
 
+    def user_params
+        params.require(:user).permit(:username, :password, :password_confirmation)
+    end
 end
