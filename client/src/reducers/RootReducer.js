@@ -9,7 +9,7 @@ const rootReducer = combineReducers({
 
 export default rootReducer
 
-function nightClubsReducer(state = {nightclubs: []}, action) {
+function nightClubsReducer(state = {}, action) {
     
     switch (action.type){
         case 'ADD_NIGHTCLUBS':
@@ -20,17 +20,22 @@ function nightClubsReducer(state = {nightclubs: []}, action) {
 }}
 
 function userReducer(state = {user: {logged_in: false}}, action){
+    let current_user = {}
     switch (action.type){
         case 'ADD_USER_LOCATION':
             // debugger
             let coords = action.location.coords
             return {...state.user, coords}
         case 'CREATE_USER':
+            current_user = action.user
+            state.user.logged_in = true
+            return {...state.user, current_user}
+        case  'ADD_LOGGED_IN_USER':
             debugger
-            let current_user = action.user
-            state.logged_in = true
-            return {...state.user, current_user}        
-        
+            current_user = action.user
+            if(state.user){
+            state.user.logged_in = action.user.logged_in} 
+            return {...state.user, current_user}
         default:
             return state
     }

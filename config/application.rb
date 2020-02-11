@@ -23,12 +23,21 @@ module Clubbio
     config.load_defaults 5.2
     config.middleware.insert_before 0, Rack::Cors do
       allow do
-        origins '*'
-        resource '*', headers: :any, methods: [:get, :post, :options]
+        origins 'http://localhost:3001'
+        resource '*', headers: :any, methods: [:get, :post, :put, :patch, :delete, :options, :head],
+        credentials: true
+      end
+
+      allow do
+        origins 'http://localhost:3000'
+        resource '*', headers: :any, methods: [:get, :post, :put, :patch, :delete, :options, :head],
+        credentials: true
       end
     end
   
-
+    config.session_store :cookie_store, key: '_interslice_session' # <-- this also configures session_options for use below
+    config.middleware.use ActionDispatch::Cookies # Required for all session management (regardless of session_store)
+    config.middleware.use config.session_store, config.session_options
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration can go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded after loading

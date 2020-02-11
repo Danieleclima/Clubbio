@@ -13,11 +13,17 @@ class NightClubCard extends Component {
         return Math.round(value * inv) / inv;
     }
 
+    renderImage = () => {
+        if (this.props.nightclub.photos){
+        return <Card.Img className="img-fluid" variant="top" src={`https://maps.googleapis.com/maps/api/place/photo?maxwidth=700&photoreference=${this.props.nightclub.photos[0].photo_reference}&key=AIzaSyDXutd941FQhPL2Nh8upxQZo8rhEAs0Moo`} />
+        }
+    }
+
     render() {
-        let image =  <Card.Img className="img-fluid" variant="top" src={`https://maps.googleapis.com/maps/api/place/photo?maxwidth=700&photoreference=${this.props.nightclub.photos[0].photo_reference}&key=AIzaSyDXutd941FQhPL2Nh8upxQZo8rhEAs0Moo`} />
+        console.log(this.props.nightclub)
         return (
             <Card>
-                {image}
+                {this.renderImage()}
                 <Card.Body>
                 <Card.Title ><Link to={`/nightclubs/${this.props.nightclub.id}`}>{this.props.nightclub.name} </Link> </Card.Title>
                     <Card.Text>

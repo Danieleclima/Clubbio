@@ -1,21 +1,14 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import NightClubCard from '../components/NightClubCard'
-import { fetchNightClubs } from '../actions/NightClubs';
-import { addUserLocation } from '../actions/User'
 import { Container, Row, Col, CardDeck } from 'react-bootstrap';
 import '../App.css'
 
-class NightClubs extends Component {
+class Users extends Component {
 
   constructor(props) {
     super(props);
-    this.getLocation()
-
-
   }
 
-  // render NightClubCard component
   renderNightClubs = () => {
     if (this.props.nightclubs && this.props.nightclubs !== []) {
       debugger
@@ -25,32 +18,13 @@ class NightClubs extends Component {
     } else { return <React.Fragment></React.Fragment> }
   }
 
-  componentDidMount() {
-  }
-
-  // get location from browser
-  getLocation = () => {
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(this.getCoordinates, null, { enableHighAccuracy: true });
-    } else {
-      alert("Geolocation is not supported by this browser.");
-    }
-  }
-
-  // pass coordinates to action
-  getCoordinates = (position) => {
-    console.log(position)
-    // debugger
-    this.props.addUserLocation(position)
-  }
-
   render() {
     return (
       <React.Fragment>
         <Container className="Homepage-title">
           <Row>
             <Col className="d-flex justify-content-center">
-              <h2>NightClubs near you</h2>
+              <h2>Users near you</h2>
             </Col>
           </Row>
           <Row>
@@ -75,4 +49,4 @@ const mapStateToProps = (state) => {
 }
 
 
-export default connect(mapStateToProps, { fetchNightClubs, addUserLocation })(NightClubs);
+export default connect(mapStateToProps, { })(Users);

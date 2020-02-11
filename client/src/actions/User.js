@@ -5,6 +5,7 @@ const options = (request, formData) => {
                   'Content-Type': "application/json",
                   Accept: "application/json"
               },
+              credentials: 'include',
             //   Origin: "http://localhost:3000/signup",
               body: JSON.stringify(formData) 
           }   
@@ -35,4 +36,31 @@ export const createUser = user => {
         })
 }
 }
+}
+
+export const checkLoginStatus = () => {
+    debugger
+    return (dispatch) => {
+        dispatch ({type: 'START_CHECKING'});
+        fetch(`http://localhost:3001/logged_in`,{  
+            method: "GET",
+          headers: {
+              'Content-Type': "application/json",
+              Accept: "application/json"
+          },
+          credentials: 'include'
+        })
+          .then(user => {
+            return user.json()
+        })
+        .then(current_user => {
+            debugger
+            dispatch({type: 'ADD_LOGGED_IN_USER', user: current_user})
+        })
+        .catch(error => {
+            debugger
+            console.log(error)
+        })
+
+    }
 }

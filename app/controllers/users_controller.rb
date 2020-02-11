@@ -8,8 +8,11 @@ class UsersController < ApplicationController
     end
 
     def create
-        binding.pry
         user= User.create(user_params)
+        if user
+        session[:user_id] = user.id
+        end
+        binding.pry
         render json: user
     end
 

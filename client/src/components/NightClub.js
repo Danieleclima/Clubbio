@@ -14,6 +14,3 @@ export default class NightClub extends Component {
     }
 }
 
-const mapStateToProps = (state) => {
-    return {nightclubs: state.nighclubs}
-}
