@@ -6,7 +6,7 @@ export default class User extends Component {
     render(){
         return(
             <React.Fragment>
-                User
+                <h2>{this.props.user.username}</h2>
             </React.Fragment>
         )
     }

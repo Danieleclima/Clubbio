@@ -6,7 +6,7 @@ import Homepage from './pages/Homepage';
 import Signup from './pages/Signup'
 import NightClub from './components/NightClub';
 import Layout from './components/Layout'
-import User from './components/User'
+import Users from './containers/Users'
 
 class App extends Component {
 
@@ -18,7 +18,7 @@ render(){
     <Switch>
       <Route path="/" exact component={Homepage} />
       <Route path='/nightclubs/:id' exact component={NightClub} />
-      <Route path='/users/:id' exact component={User} />
+      <Route path='/users/:id' exact component={Users} />
       <Route path="/signup" exact component={Signup} />
       {/* <NightClubs/> */}
     </Switch>

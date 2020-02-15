@@ -27,11 +27,11 @@ function userReducer(state = {user: {logged_in: false}}, action){
             let coords = action.location.coords
             return {...state.user, coords}
         case 'CREATE_USER':
+            debugger
             current_user = action.user
-            state.user.logged_in = true
+            state.logged_in = true
             return {...state.user, current_user}
         case  'ADD_LOGGED_IN_USER':
-            debugger
             current_user = action.user
             if(state.user){
             state.user.logged_in = action.user.logged_in} 

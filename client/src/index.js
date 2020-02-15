@@ -5,7 +5,7 @@ import { Provider } from 'react-redux';
 import { createStore, applyMiddleware} from 'redux'
 import rootReducer from './reducers/RootReducer'
 import thunk from 'redux-thunk'
-// import * as serviceWorker from './serviceWorker';
+import * as serviceWorker from './serviceWorker';
 
 let store = createStore(rootReducer, applyMiddleware(thunk))
 
@@ -14,7 +14,7 @@ ReactDOM.render(
 <App />
 </Provider>,
 document.getElementById('root'));
-// serviceWorker();
+serviceWorker.register();
 
 // serviceWorker.register('/offline.js', {scope: '/'})
 // If you want your app to work offline and load faster, you can change
