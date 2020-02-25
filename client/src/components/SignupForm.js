@@ -27,8 +27,9 @@ class SignUpForm extends Component {
 
     handleOnSubmit = event => {
         // console.log(this.state)
+        console.log('a')
         event.preventDefault();
-        debugger
+        //debugger
         this.props.createUser(this.state)
         this.setState({
             first_name: '',
@@ -41,6 +42,7 @@ class SignUpForm extends Component {
             password: '',
             password_confirmation: ''
         })
+        console.log('e')
     }
 
     render() {

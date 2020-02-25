@@ -9,7 +9,7 @@
 
 .fullview_component {
   min-height: 100vh;
-  padding: 6%;
+  padding: 1%;
 }
 
 .equal-height-columns {
@@ -32,6 +32,11 @@
 }
 
 .Homepage-title {
-  height: 10vh;
+  height: 12vh;
   padding: 2%;
+}
+
+img {
+  width: 100%;
+  max-width: 100%;
 }

@@ -8,7 +8,7 @@ export default class NightClub extends Component {
     render() {
         return (
             <React.Fragment>
-                {console.log(this.props.match.params)}
+                {/* {console.log(this.props.match.params)} */}
                 <Carousel>
                     <Carousel.Item>
                         <img

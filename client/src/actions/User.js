@@ -22,20 +22,23 @@ export const addUserLocation = location => {
 export const createUser = user => {
     return (dispatch) => {
         if (user){
-        debugger
-        dispatch ({type: 'START_CREATING_USER'});
-        // let proxyUrl = 'https://cors-anywhere.herokuapp.com/';
-        let targetUrl = `http://localhost:3001/users`;
-        fetch(targetUrl, options("POST", {user: user}))
-        .then(u => {
-            return u.json()
-        })
-        .then(current_user => {
-            debugger
-            dispatch({type: 'CREATE_USER', user: current_user})    
-        })
-}
-}
+        // debugger
+            console.log('b')
+            dispatch ({type: 'START_CREATING_USER'});
+            // let proxyUrl = 'https://cors-anywhere.herokuapp.com/';
+            let targetUrl = `http://localhost:3001/users`;
+            fetch(targetUrl, options("POST", {user: user}))
+                .then(u => {
+                    return u.json()
+                })
+                .then(current_user => {
+                    //debugger
+                    console.log('c')
+                    dispatch({type: 'CREATE_USER', user: current_user})    
+                })  
+        }
+    }
+    console.log('d')
 }
 
 export const checkLoginStatus = () => {
