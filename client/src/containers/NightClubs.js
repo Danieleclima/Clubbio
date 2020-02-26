@@ -21,10 +21,10 @@ class NightClubs extends Component {
   }
 
   // render NightClubCard component
-  renderNightClubs = () => {
-    if (this.props.nightclubs && this.props.nightclubs !== []) {
+  renderNightClubs = (nightclubs) => {
+    if (nightclubs && nightclubs !== []) {
       debugger
-      return <Container className="fullview_component" fluid={true}> <Row><CardDeck>{this.props.nightclubs.slice(0, 6).map(n => {
+      return <Container className="fullview_component" fluid={true}> <Row><CardDeck>{nightclubs.slice(0, 6).map(n => {
         return <Col className="col-md-4 col-sm-6 my-3"> <NightClubCard nightclub={n} /> </Col>
       })}  </CardDeck> </Row> </Container>
     } else { return <React.Fragment></React.Fragment> }
@@ -50,30 +50,23 @@ class NightClubs extends Component {
   }
 
   sortingNightClubs = () => {
-    debugger
-    let compare = function(a, b){
-
-      const firstNightClub = a.rating
-      const secondNightClub = b.rating
-  
-      let comparison = 0;
-  
-      if (firstNightClub > secondNightClub) {
-        comparison = 1;
-      } else if (secondNightClub < firstNightClub) {
-        comparison = -1;
-      }
-      return comparison
+    // compare function that will get passed to the sort method
+       let compare = function(a, b){
+      return b.rating - a.rating
     }
-    if (this.state.sortedByRating) {
+
+    if (!this.state.sortedByRating) {
       this.setState({
         sortedByRating: true
       })
-      this.props.nightclubs.sort(compare)
+      let sortedArray = this.props.nightclubs.sort(compare)
+      debugger
+      this.renderNightClubs(sortedArray)
     } else {
       this.setState({
         sortedByRating: false
       })
+      this.renderNightClubs(this.props.nightclubs)
       }
   }
 
@@ -93,7 +86,7 @@ class NightClubs extends Component {
           </Row>
         </Container>
         <CheckBox sortByRating={this.sortingNightClubs} />
-        {this.renderNightClubs()}
+        {this.renderNightClubs(this.props.nightclubs)}
         {this.props.fetchNightClubs(this.props.user.coords)}
       </React.Fragment>
     )
