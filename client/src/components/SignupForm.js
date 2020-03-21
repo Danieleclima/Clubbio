@@ -1,11 +1,28 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Container, Row, Col, Form, InputGroup, Button } from 'react-bootstrap'
+import { Col, Form, InputGroup, Button, Modal } from 'react-bootstrap'
 import { createUser } from '../actions/User';
-import '../App.css'
+import '../App.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faGooglePlusSquare } from '@fortawesome/free-brands-svg-icons'
+
 
 
 class SignUpForm extends Component {
+
+    componentDidMount() {
+        const signUpButton = document.getElementById('signUp');
+        const signInButton = document.getElementById('signIn');
+        const container = document.getElementById('container-sign');
+
+        signUpButton.addEventListener('click', () => {
+            container.classList.add("right-panel-active");
+        });
+
+        signInButton.addEventListener('click', () => {
+            container.classList.remove("right-panel-active");
+        });
+    }
 
     state = {
         first_name: '',
@@ -16,7 +33,8 @@ class SignUpForm extends Component {
         postcode: '',
         email: '',
         password: '',
-        password_confirmation: ''
+        password_confirmation: '',
+        show_modal: false
     }
 
     handleOnChange = event => {
@@ -47,131 +65,70 @@ class SignUpForm extends Component {
 
     render() {
         return (
-            <Container>
-                <Row className="align-items-center fullview_component">
-                    <Col className="col-xs-6">
-                        <Form noValidate validated="" onSubmit={this.handleOnSubmit}>
-                            <Form.Row>
-                                <Form.Group as={Col} md="2" controlId="validationCustom01" className="align-self-start">
-                                    <Form.Label>First name</Form.Label>
-                                    <Form.Control
-                                        onChange={this.handleOnChange}
-                                        required
-                                        type="text"
-                                        name="first_name"
-                                        placeholder="First name"
-                                        value={this.state.first_name}
-                                    />
-                                    <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
-                                </Form.Group>
+            <React.Fragment>
+                <div class="container" id="container-sign">
+                    <div class="form-container sign-up-container">
+                        <form action="#">
+                            <h1>Create Account</h1>
+                            <div class="social-container">
+                                <p>Hello world</p>
+                                {/* <a href="#" class="social"><FontAwesomeIcon icon={faCoffee} /></a> */}
+                                <a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
+                                <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
+                            </div>
+                            <span>or use your email for registration</span>
+                            <input type="text" placeholder="Name" />
+                            <input type="email" placeholder="Email" />
+                            <input type="password" placeholder="Password" />
+                            <button>Sign Up</button>
+                        </form>
+                    </div>
+                    <div class="form-container sign-in-container">
+                        <form action="#">
+                            <h1>Sign in</h1>
+                            <div class="social-container">
 
-                                <Form.Group as={Col} md="2" controlId="validationCustom02">
-                                    <Form.Label>Last name</Form.Label>
-                                    <Form.Control
-                                        onChange={this.handleOnChange}
-                                        required
-                                        type="text"
-                                        name="last_name"
-                                        placeholder="Last name"
-                                        value={this.state.last_name}
-                                    />
-                                    <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
-                                </Form.Group>
+                                <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
+                                <a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
+                                <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
+                            </div>
+                            <span>or use your account</span>
+                            <input type="email" placeholder="Email" />
+                            <input type="password" placeholder="Password" />
+                            <a href="#">Forgot your password?</a>
+                            <button>Sign In</button>
+                        </form>
+                    </div>
+                    <div class="overlay-container">
+                        <div class="overlay">
+                            <div class="overlay-panel overlay-left">
+                                <h1>Welcome Back!</h1>
+                                <p>To keep connected with us please login with your personal info</p>
+                                <button class="ghost" id="signIn">Sign In</button>
+                            </div>
+                            <div class="overlay-panel overlay-right">
+                                <h1>Hello, Friend!</h1>
+                                <p>Enter your personal details and start journey with us</p>
+                                <button class="ghost" id="signUp">Sign Up</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-                                <Form.Group as={Col} md="4" controlId="validationCustomUsername">
-                                    <Form.Label>Username</Form.Label>
-                                    <InputGroup>
-                                        <InputGroup.Prepend>
-                                            <InputGroup.Text id="inputGroupPrepend">@</InputGroup.Text>
-                                        </InputGroup.Prepend>
-                                        <Form.Control
-                                            onChange={this.handleOnChange}
-                                            type="text"
-                                            placeholder="Username"
-                                            name="username"
-                                            value={this.state.username}
-                                            aria-describedby="inputGroupPrepend"
-                                            required
-                                        />
-                                        <Form.Control.Feedback type="invalid">
-                                            Please choose a username.
-                </Form.Control.Feedback>
-                                    </InputGroup>
+                <footer>
+                    <p>
+                        Created with <i class="fa fa-heart"></i> by
+		<a target="_blank" href="https://florin-pop.com">Florin Pop</a>
+		- Read how I created this and how you can join the challenge
+		<a target="_blank" href="https://www.florin-pop.com/blog/2019/03/double-slider-sign-in-up-form/">here</a>.
+	</p>
+                </footer>
+            </React.Fragment>
 
-                                </Form.Group>
-                                <Form.Group as={Col} md="4" controlId="validationCustom03">
-                                    <Form.Label>Password</Form.Label>
-                                    <Form.Control
-                                        onChange={this.handleOnChange}
-                                        required
-                                        type="password"
-                                        name="password"
-                                        placeholder="Password"
-                                        value={this.state.password}
-                                    />
-                                    <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
-                                </Form.Group>
-
-                                
-                                <Form.Group as={Col} md="4" controlId="validationCustom03">
-                                    <Form.Label>Password Confirmation</Form.Label>
-                                    <Form.Control
-                                        onChange={this.handleOnChange}
-                                        required
-                                        type="password"
-                                        name="password_confirmation"
-                                        placeholder="Confirm password"
-                                        value={this.state.password_confirmation}
-                                    />
-                                    <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
-                                </Form.Group>
-
-                            </Form.Row>
-                            <Form.Row>
-                                <Form.Group as={Col} md="4" controlId="validationCustom04">
-                                    <Form.Label>Email</Form.Label>
-                                    <Form.Control onChange={this.handleOnChange} name="email" type="email" placeholder="email" required />
-                                    <Form.Control.Feedback type="invalid">
-                                        Please provide a valid email address.
-              </Form.Control.Feedback>
-                                </Form.Group>
-
-                                <Form.Group as={Col} md="2" controlId="validationCustom05">
-                                    <Form.Label>City</Form.Label>
-                                    <Form.Control onChange={this.handleOnChange} name="city" type="text" placeholder="City" required />
-                                    <Form.Control.Feedback type="invalid">
-                                        Please provide a valid city.
-              </Form.Control.Feedback>
-                                </Form.Group>
-                                <Form.Group as={Col} md="3" controlId="validationCustom06">
-                                    <Form.Label>Country</Form.Label>
-                                    <Form.Control onChange={this.handleOnChange} name="country" type="text" placeholder="State" required />
-                                    <Form.Control.Feedback type="invalid">
-                                        Please provide a valid country.
-              </Form.Control.Feedback>
-                                </Form.Group>
-                                <Form.Group as={Col} md="3" controlId="validationCustom07">
-                                    <Form.Label>Postcode</Form.Label>
-                                    <Form.Control onChange={this.handleOnChange} name="postcode" type="text" placeholder="Zip" required />
-                                    <Form.Control.Feedback type="invalid">
-                                        Please provide a valid Postcode.
-              </Form.Control.Feedback>
-                                </Form.Group>
-                            </Form.Row>
-                            <Form.Group>
-                                <Form.Check
-                                    required
-                                    label="Agree to terms and conditions"
-                                    feedback="You must agree before submitting."
-                                />
-                            </Form.Group>
-                            <Button type="submit">Submit form</Button>
-                        </Form>
-                    </Col>
-                </Row>
-            </Container>
         )
     }
 }
+
+
 
 export default connect(null, { createUser })(SignUpForm);

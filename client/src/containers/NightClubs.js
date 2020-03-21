@@ -17,17 +17,20 @@ class NightClubs extends Component {
   }
 
   state = {
-    sortedByRating: false
+    sortedByRating: false,
+    sortedArray: false
   }
 
   // render NightClubCard component
-  renderNightClubs = (nightclubs) => {
+  renderNightClubs = (nightclubs = this.props.nightclubs) => {
+    if (this.state.sortedArray){
+      nightclubs = this.state.sortedArray
+    }
     if (nightclubs && nightclubs !== []) {
-      debugger
       return <Container className="fullview_component" fluid={true}> <Row><CardDeck>{nightclubs.slice(0, 6).map(n => {
         return <Col className="col-md-4 col-sm-6 my-3"> <NightClubCard nightclub={n} /> </Col>
       })}  </CardDeck> </Row> </Container>
-    } else { return <React.Fragment></React.Fragment> }
+    }
   }
 
   componentDidMount() {
@@ -45,29 +48,34 @@ class NightClubs extends Component {
   // pass coordinates to action
   getCoordinates = (position) => {
     console.log(position)
-    // debugger
+  
     this.props.addUserLocation(position)
   }
 
   sortingNightClubs = () => {
     // compare function that will get passed to the sort method
-       let compare = function(a, b){
+    let compare = function (a, b) {
       return b.rating - a.rating
     }
 
     if (!this.state.sortedByRating) {
+
+      let sortedArray = [...this.props.nightclubs]
+      sortedArray.sort(compare)
+
       this.setState({
-        sortedByRating: true
+        sortedByRating: true,
+        sortedArray: [...sortedArray]
       })
-      let sortedArray = this.props.nightclubs.sort(compare)
-      debugger
+
       this.renderNightClubs(sortedArray)
     } else {
       this.setState({
-        sortedByRating: false
+        sortedByRating: false,
+        sortedArray: false
       })
-      this.renderNightClubs(this.props.nightclubs)
-      }
+      this.renderNightClubs()
+    }
   }
 
   render() {
@@ -86,7 +94,7 @@ class NightClubs extends Component {
           </Row>
         </Container>
         <CheckBox sortByRating={this.sortingNightClubs} />
-        {this.renderNightClubs(this.props.nightclubs)}
+        {this.renderNightClubs()}
         {this.props.fetchNightClubs(this.props.user.coords)}
       </React.Fragment>
     )
@@ -94,7 +102,6 @@ class NightClubs extends Component {
 }
 
 const mapStateToProps = (state) => {
-  debugger
   return {
     nightclubs: state.nightclubs.nightclubs,
     user: state.user

@@ -12,7 +12,7 @@ class Users extends Component {
 
   renderUser = () => {
     if (this.props.user.logged_in) {
-      debugger
+
       return <User user={this.props.user.current_user} />
     } else { return <React.Fragment> <h2>You are not logged in</h2></React.Fragment> }
   }
@@ -27,7 +27,6 @@ class Users extends Component {
 }
 
 const mapStateToProps = (state) => {
-    debugger
   return {
     nightclubs: state.nightclubs.nightclubs,
     user: state.user

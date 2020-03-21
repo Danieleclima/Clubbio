@@ -7,10 +7,17 @@ import Signup from './pages/Signup'
 import NightClub from './components/NightClub';
 import Layout from './components/Layout'
 import Users from './containers/Users'
+import { fab } from '@fortawesome/free-brands-svg-icons'
+import { faCheckSquare, faCoffee } from '@fortawesome/free-solid-svg-icons'
+import { library } from '@fortawesome/fontawesome-svg-core';
+
 
 class App extends Component {
 
 render(){
+
+  library.add(fab, faCheckSquare, faCoffee)
+
   return(
     <React.Fragment>
       <Layout>
