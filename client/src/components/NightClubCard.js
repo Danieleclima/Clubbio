@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { Card, Button } from 'react-bootstrap';
-import ReactStars from 'react-rating-stars-component';
 import '../App.css';
+import Rating from 'react-rating';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faStar } from '@fortawesome/free-solid-svg-icons';
-import { faStarHalf } from '@fortawesome/free-solid-svg-icons';
-import {FaStar} from 'react-icons/fa';
+
+
 
 class NightClubCard extends Component {
 
@@ -33,14 +32,20 @@ class NightClubCard extends Component {
                         Some quick example text to build on the card title and make up the bulk of
                         the card's content.
                 </Card.Text>
-                    <ReactStars 
+                <Rating 
+                  emptySymbol= {<span className="fa fa-star-o fa-2x"/>}
+                  fullSymbol={<FontAwesomeIcon icon="star" size="2x"/>}
+                  initialRating={this.roundRating(this.props.nightclub.rating, 0.5)} 
+                  fractions={2} />
+
+                    {/* <ReactStars 
                     count={5} 
                     size={40} 
                     half={true} 
-                    emptyIcon={<FaStar/>} 
-                    halfIcon={<FaStar/>} 
-                    fullIcon={<FaStar/>}
-                    value={this.roundRating(this.props.nightclub.rating, 0.5)} />
+                    emptyIcon={<span><i className='fa fa-star'></i></span>} 
+                    halfIcon={<span><i className='fa fa-star'></i></span>} 
+                    fullIcon={<span><i className='fa fa-star'></i></span>}
+                    value={this.roundRating(this.props.nightclub.rating, 0.5)} /> */}
                 </Card.Body>
                 <Card.Footer>
                     <Button className="Clubbio-color" variant="primary">Go somewhere</Button>

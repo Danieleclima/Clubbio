@@ -6,7 +6,7 @@ import logo from '../assets/Clubbio_logo_reduced.png'
 import { checkLoginStatus } from '../actions/User';
 import { connect } from 'react-redux';
 import SignUpForm from '../components/SignupForm';
-import { Button, Modal } from 'react-bootstrap'
+import { Button, Modal, Container, Row, Col } from 'react-bootstrap'
 
 class NavigationBar extends Component {
 
@@ -36,9 +36,7 @@ class NavigationBar extends Component {
                 <Nav.Link href="/">Home</Nav.Link>
                 <Nav.Link href="/Blog">Blog</Nav.Link>
                 <Nav.Link href={`/signup`}> Log in</Nav.Link>
-                <Button onClick={() => this.showAndHide()}>
-                    Sign up
-            </Button>
+                <Nav.Link onClick={() => this.showAndHide()}> Sign up </Nav.Link>
                 <Modal
                     show={this.state.showModal}
                     onHide={() => this.showAndHide()}
@@ -46,9 +44,9 @@ class NavigationBar extends Component {
                     aria-labelledby="contained-modal-title-vcenter"
                     centered >
                     <Modal.Header closeButton>
-                        {/* <Modal.Title id="contained-modal-title-vcenter">
+                        <Modal.Title id="contained-modal-title-vcenter">
                             Sign up
-                </Modal.Title> */}
+                </Modal.Title>
                     </Modal.Header>
                     <Modal.Body className="justify-content-center">
                         <SignUpForm />

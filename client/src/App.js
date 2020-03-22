@@ -8,15 +8,15 @@ import NightClub from './components/NightClub';
 import Layout from './components/Layout'
 import Users from './containers/Users'
 import { fab } from '@fortawesome/free-brands-svg-icons'
-import { faCheckSquare, faCoffee } from '@fortawesome/free-solid-svg-icons'
+import { faCheckSquare, faStar, faStarHalf } from '@fortawesome/free-solid-svg-icons'
 import { library } from '@fortawesome/fontawesome-svg-core';
-
+import './App.css';
 
 class App extends Component {
 
 render(){
 
-  library.add(fab, faCheckSquare, faCoffee)
+  library.add(fab, faCheckSquare, faStar, faStarHalf)
 
   return(
     <React.Fragment>
