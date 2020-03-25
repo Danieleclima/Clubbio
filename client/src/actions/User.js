@@ -22,18 +22,18 @@ export const addUserLocation = location => {
 export const createUser = user => {
     return (dispatch) => {
         if (user){
-        // debugger
             console.log('b')
             dispatch ({type: 'START_CREATING_USER'});
-            // let proxyUrl = 'https://cors-anywhere.herokuapp.com/';
             let targetUrl = `http://localhost:3001/users`;
+            // Post the user to the Rails API user controller
             fetch(targetUrl, options("POST", {user: user}))
+            // returning user from the Rails API
                 .then(u => {
                     return u.json()
                 })
                 .then(current_user => {
-                    //debugger
                     console.log('c')
+                    // sending the returned user to the Redux userReducer
                     dispatch({type: 'CREATE_USER', user: current_user})    
                 })  
         }

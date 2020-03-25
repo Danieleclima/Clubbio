@@ -46,10 +46,10 @@ class NavigationBar extends Component {
                     <Modal.Header closeButton>
                         <Modal.Title id="contained-modal-title-vcenter">
                             Sign up
-                </Modal.Title>
+                    </Modal.Title>
                     </Modal.Header>
                     <Modal.Body className="justify-content-center">
-                        <SignUpForm />
+                        <SignUpForm show={true} />
                     </Modal.Body>
                 </Modal>
             </Nav>

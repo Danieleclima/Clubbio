@@ -33,10 +33,11 @@ class NightClubCard extends Component {
                         the card's content.
                 </Card.Text>
                 <Rating 
-                  emptySymbol= {<span className="fa fa-star-o fa-2x"/>}
-                  fullSymbol={<FontAwesomeIcon icon="star" size="2x"/>}
+                  emptySymbol= {<span className="fa fa-star-o fa-2x empty-star"/>}
+                  fullSymbol={<FontAwesomeIcon icon="star" size="2x" className="full-star"/>}
                   initialRating={this.roundRating(this.props.nightclub.rating, 0.5)} 
-                  fractions={2} />
+                  
+                  />
 
                     {/* <ReactStars 
                     count={5} 

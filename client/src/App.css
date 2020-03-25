@@ -278,3 +278,61 @@ img {
     color: #3c97bf;
     text-decoration: none;
 }
+
+.empty-star {
+  color: #FFBA08;
+}
+
+.full-star {
+  color: #FFBA08;
+}
+
+.social {
+  margin: 14px;
+}
+
+.social a i{
+  margin: 12px;
+  width: 38px;
+  height: 40px;
+  font-size: 40px;
+}
+
+#facebook {
+  color: #3b5999;
+}
+
+#snapchat {
+  color: rgb(248, 244, 6);
+  border: 2px;
+  border-color: black;
+}
+
+#google {
+  background: conic-gradient(from -45deg, #ea4335 110deg, #4285f4 90deg 180deg, #34a853 180deg 270deg, #fbbc05 270deg) 73% 55%/150% 150% no-repeat;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+}
+
+#instagram {
+  background: #d6249f;
+  background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%,#d6249f 60%,#285AEB 90%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* .social a i:before{
+  content: '';
+  position: absolute;
+  top:0;
+  left:0;
+  right: 0;
+  bottom: 0;
+  background: #000;
+  border-radius: 50%;
+  z-index: -1;
+  transform: scale(0);
+  transition: 0.5s;
+} */
