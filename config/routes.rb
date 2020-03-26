@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
-  devise_for :users
+  devise_for :users, controllers: { registrations: 'registrations', sessions: 'sessions' }
   resources :reviews
-  resources :users
+  # resources :users
   resources :nightclubs
   post '/sessions' => "sessions#create"
   get '/logged_in' => "sessions#logged_in"

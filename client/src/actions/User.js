@@ -29,6 +29,7 @@ export const createUser = user => {
             fetch(targetUrl, options("POST", {user: user}))
             // returning user from the Rails API
                 .then(u => {
+                    debugger
                     return u.json()
                 })
                 .then(current_user => {
