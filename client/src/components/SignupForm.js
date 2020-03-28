@@ -25,12 +25,12 @@ class SignUpForm extends Component {
     }
 
     state = {
-        first_name: '',
-        last_name: '',
+        // first_name: '',
+        // last_name: '',
         username: '',
-        city: '',
-        country: '',
-        postcode: '',
+        // city: '',
+        // country: '',
+        // postcode: '',
         email: '',
         password: '',
         password_confirmation: '',

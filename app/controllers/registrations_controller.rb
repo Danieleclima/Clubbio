@@ -2,17 +2,22 @@ require 'pry'
 
 class RegistrationsController < Devise::RegistrationsController
 
+# register a new user
     def create
     binding.pry
-      @user = User.new(user_params)
-      if @user.save
+      @user = User.create(user_params)
+      if @user
         render json: @user
+        binding.pry
       else
+# devise custom error
+    binding.pry
         warden.custom_failure!
         render json: { error: 'signup error' }, status: :unprocessable_entity
       end
     end
-  
+
+# update user details
     def update
       @user = User.find_by_email(user_params[:email])
   
@@ -23,7 +28,8 @@ class RegistrationsController < Devise::RegistrationsController
         render :json=> @user.errors, :status=>422
       end
    end
-  
+
+# remove a user
     def destroy
       @user = User.find_by_email(user_params[:email])
       if @user.destroy
