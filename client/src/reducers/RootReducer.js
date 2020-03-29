@@ -14,7 +14,10 @@ function nightClubsReducer(state = {}, action) {
     switch (action.type){
         case 'ADD_NIGHTCLUBS':
             let nightclubs = action.nightclubs
-            // debugger
+            // filering the results just to show nightclubs rather than 
+            nightclubs = nightclubs.filter( function (nightclub){
+                return !nightclub.types.includes("lodging")
+            })
           return {...state.nightclubs, nightclubs}
     default:
         return state
