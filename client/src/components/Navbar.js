@@ -78,7 +78,7 @@ class NavigationBar extends Component {
 }
 
 const mapStateToProps = (state) => {
-    debugger
+    // debugger
     return { user: state.user }
 }
 

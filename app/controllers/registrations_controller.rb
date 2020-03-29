@@ -2,12 +2,15 @@ require 'pry'
 
 class RegistrationsController < Devise::RegistrationsController
 
+    skip_before_action :verify_authenticity_token, :only => :create
 # register a new user
     def create
-    binding.pry
-      @user = User.create(user_params)
-      if @user
-        render json: @user
+      @user = User.new(user_params)
+      if @user.save
+        binding.pry
+        sign_in :user, @user
+        # session[:user_id] = @user.id
+        render :json=> @user, :status=>200
         binding.pry
       else
 # devise custom error

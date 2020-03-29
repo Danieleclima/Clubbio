@@ -34,12 +34,12 @@ export const createUser = user => {
                 })
                 .then(current_user => {
                     console.log('c')
+                    debugger
                     // sending the returned user to the Redux userReducer
                     dispatch({type: 'CREATE_USER', user: current_user})    
                 })  
         }
     }
-    console.log('d')
 }
 
 export const checkLoginStatus = () => {

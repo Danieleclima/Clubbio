@@ -14,6 +14,7 @@ function nightClubsReducer(state = {}, action) {
     switch (action.type){
         case 'ADD_NIGHTCLUBS':
             let nightclubs = action.nightclubs
+            // debugger
           return {...state.nightclubs, nightclubs}
     default:
         return state
