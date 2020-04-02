@@ -7,7 +7,7 @@ class SessionsController < Devise::SessionsController
     return invalid_login_attempt unless @user
 
     if @user.valid_password?(user_params[:password])
-      sign_in :user, @user
+      sign_in_and_redirect root_path
       render json: {
         logged_in: true,
         user: @user
