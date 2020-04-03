@@ -22,7 +22,6 @@ export const addUserLocation = location => {
 export const createUser = user => {
     return (dispatch) => {
         if (user){
-            console.log('b')
             dispatch ({type: 'START_CREATING_USER'});
             let targetUrl = `http://localhost:3001/users`;
             // Post the user to the Rails API user controller
@@ -40,6 +39,24 @@ export const createUser = user => {
                 })  
         }
     }
+}
+
+export const createUserfromOmniauth = provider => {
+    return (dispatch) => {
+            dispatch ({type: 'START_CREATING_USER'});
+            // URL corresponding to the relevant Social Network
+            let targetUrl = `http://localhost:3001/users`;
+            fetch(targetUrl)
+            // returning user from the Rails API
+                .then(u => {
+                    return u.json()
+                })
+                .then(current_user => {
+                    console.log('c')
+                    // sending the returned user to the Redux userReducer
+                    dispatch({type: 'CREATE_USER', user: current_user})    
+                })  
+        }
 }
 
 export const checkLoginStatus = () => {
