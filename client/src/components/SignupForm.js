@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Col, Form, InputGroup, Button, Modal } from 'react-bootstrap'
-import { createUser } from '../actions/User';
+import { createUser, createUserfromOmniauth } from '../actions/User';
 import '../App.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Nav } from 'react-bootstrap'
@@ -67,6 +67,10 @@ class SignUpForm extends Component {
         console.log('e')
     }
 
+    handleOnClick = event => {
+        this.props.createUserfromOmniauth(event.target.id)
+    }
+
     render() {
         return (
             <React.Fragment>
@@ -93,7 +97,7 @@ class SignUpForm extends Component {
                                     <span>or use your account</span>
                                     {/* <div class="social-container"> */}
                                     <span className="social">
-                                        <a href="http://localhost:3001/users/auth/facebook" className="social"><i class="fab fa-facebook-f" id="facebook"></i></a>
+                                        <a href="http://localhost:3001/users/auth/facebook" className="social" id="facebook" onClick={this.handleOnClick}><i class="fab fa-facebook-f" id="facebook"></i></a>
                                         <a href="#" class="social"><i class="fab fa-google" id="google"></i></a>
                                         <a href="#" class="social"><i class="fab fa-instagram" id="instagram"></i></a>
                                         <a href="#" class="social"><i class="fab fa-snapchat" id="snapchat"></i></a>
@@ -137,4 +141,4 @@ class SignUpForm extends Component {
 
 
 
-export default connect(null, { createUser })(SignUpForm);
+export default connect(null, { createUser, createUserfromOmniauth })(SignUpForm);
