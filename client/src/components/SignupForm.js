@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Col, Form, InputGroup, Button, Modal } from 'react-bootstrap'
-import { createUser, createUserfromOmniauth } from '../actions/User';
+import { createUser } from '../actions/User';
 import '../App.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Nav } from 'react-bootstrap'
@@ -141,4 +141,4 @@ class SignUpForm extends Component {
 
 
 
-export default connect(null, { createUser, createUserfromOmniauth })(SignUpForm);
+export default connect(null, { createUser })(SignUpForm);
