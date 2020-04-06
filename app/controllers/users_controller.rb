@@ -2,8 +2,6 @@ require 'pry'
 
 class UsersController < ApplicationController
 
-include CurrentUserConcern
-
     def index
         # binding.pry
         users = User.all
@@ -17,6 +15,13 @@ include CurrentUserConcern
         session[:user_id] = user.id
         end
         render json: user
+    end
+
+    def logged_in
+        # binding.pry
+        if current_user
+            render json: current_user
+        end
     end
 
     def user_params

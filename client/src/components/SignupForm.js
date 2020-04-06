@@ -67,10 +67,6 @@ class SignUpForm extends Component {
         console.log('e')
     }
 
-    handleOnClick = event => {
-        this.props.createUserfromOmniauth(event.target.id)
-    }
-
     render() {
         return (
             <React.Fragment>
@@ -97,7 +93,7 @@ class SignUpForm extends Component {
                                     <span>or use your account</span>
                                     {/* <div class="social-container"> */}
                                     <span className="social">
-                                        <a href="http://localhost:3001/users/auth/facebook" className="social" id="facebook" onClick={this.handleOnClick}><i class="fab fa-facebook-f" id="facebook"></i></a>
+                                        <a href="http://localhost:3001/users/auth/facebook" className="social" id="facebook"><i class="fab fa-facebook-f" id="facebook"></i></a>
                                         <a href="#" class="social"><i class="fab fa-google" id="google"></i></a>
                                         <a href="#" class="social"><i class="fab fa-instagram" id="instagram"></i></a>
                                         <a href="#" class="social"><i class="fab fa-snapchat" id="snapchat"></i></a>

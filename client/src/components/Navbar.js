@@ -25,11 +25,12 @@ class NavigationBar extends Component {
     }
 
     renderNavLinks = () => {
-        if (this.props.user.logged_in) {
+        debugger
+        if (this.props.user.current_user) {
             return <Nav>
                 <Nav.Link href="/">Home</Nav.Link>
                 <Nav.Link href="/Blog">Blog</Nav.Link>
-                <Nav.Link href={`/users/${this.props.user.current_user.id}`}> Logged in as: {this.props.user.current_user.user.username} </Nav.Link>
+                <Nav.Link href={`/users/${this.props.user.current_user.id}`}> Logged in as: {this.props.user.current_user.username || this.props.user.current_user.email} </Nav.Link>
             </Nav>
         } else {
             return <Nav>
