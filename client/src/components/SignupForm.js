@@ -94,7 +94,7 @@ class SignUpForm extends Component {
                                     {/* <div class="social-container"> */}
                                     <span className="social">
                                         <a href="http://localhost:3001/users/auth/facebook" className="social" id="facebook"><i class="fab fa-facebook-f" id="facebook"></i></a>
-                                        <a href="#" class="social"><i class="fab fa-google" id="google"></i></a>
+                                        <a href="http://localhost:3001/users/auth/google_oauth2" class="social"><i class="fab fa-google" id="google"></i></a>
                                         <a href="#" class="social"><i class="fab fa-instagram" id="instagram"></i></a>
                                         <a href="#" class="social"><i class="fab fa-snapchat" id="snapchat"></i></a>
                                     </span>
