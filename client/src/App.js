@@ -27,7 +27,7 @@ render(){
       <Route path="/" exact component={Homepage} />
       <Route path='/nightclubs/:id' exact component={NightClub} />
       <Route path='/users/:id' exact component={Users} />
-      <Route path="/signup" exact component={Signup} />
+      {/* <Route path="/signup" exact component={Signup} /> */}
     </Switch>
   </Router>
   </Layout>

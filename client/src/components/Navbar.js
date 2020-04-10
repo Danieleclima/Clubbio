@@ -25,7 +25,6 @@ class NavigationBar extends Component {
     }
 
     renderNavLinks = () => {
-        debugger
         if (this.props.user.current_user) {
             return <Nav>
                 <Nav.Link href="/">Home</Nav.Link>
@@ -79,7 +78,6 @@ class NavigationBar extends Component {
 }
 
 const mapStateToProps = (state) => {
-    // debugger
     return { user: state.user }
 }
 

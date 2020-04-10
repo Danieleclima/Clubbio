@@ -323,6 +323,10 @@ img {
   -webkit-text-fill-color: transparent;
 }
 
+.nightclub-loading {
+	min-height: 35vh;
+}
+
 /* .social a i:before{
   content: '';
   position: absolute;

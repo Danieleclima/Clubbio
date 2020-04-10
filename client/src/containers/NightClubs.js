@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import NightClubCard from '../components/NightClubCard'
+import NightClubLoading from '../components/NightClubLoading'
 import { fetchNightClubs } from '../actions/NightClubs';
 import { addUserLocation } from '../actions/User'
-import { Container, Row, Col, CardDeck } from 'react-bootstrap';
+import { Container, Row, Col, CardDeck, Spinner } from 'react-bootstrap';
 import '../App.css';
 import CheckBox from '../components/Checkbox'
 
@@ -23,13 +24,24 @@ class NightClubs extends Component {
 
   // render NightClubCard component
   renderNightClubs = (nightclubs = this.props.nightclubs) => {
-    if (this.state.sortedArray){
+    debugger
+    if (this.state.sortedArray) {
       nightclubs = this.state.sortedArray
     }
-    if (nightclubs && nightclubs !== []) {
+    if (nightclubs) {
       return <Container className="fullview_component" fluid={true}> <Row><CardDeck>{nightclubs.slice(0, 6).map(n => {
         return <Col className="col-md-4 col-sm-6 my-3"> <NightClubCard nightclub={n} /> </Col>
       })}  </CardDeck> </Row> </Container>
+    } else {
+      debugger
+      return <Container className="fullview_component" fluid={true}> <Row><CardDeck className="container-fluid">
+       <Col className="col-md-4 col-sm-6 my-3"> <NightClubLoading/> </Col>
+       <Col className="col-md-4 col-sm-6 my-3"> <NightClubLoading/> </Col>
+       <Col className="col-md-4 col-sm-6 my-3"> <NightClubLoading/> </Col>
+       <Col className="col-md-4 col-sm-6 my-3"> <NightClubLoading/> </Col>
+       <Col className="col-md-4 col-sm-6 my-3"> <NightClubLoading/> </Col>
+       <Col className="col-md-4 col-sm-6 my-3"> <NightClubLoading/> </Col>  
+    } </CardDeck> </Row> </Container>
     }
   }
 
@@ -48,7 +60,7 @@ class NightClubs extends Component {
   // pass coordinates to action
   getCoordinates = (position) => {
     console.log(position)
-  
+
     this.props.addUserLocation(position)
   }
 
