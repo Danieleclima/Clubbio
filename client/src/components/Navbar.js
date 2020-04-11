@@ -41,16 +41,15 @@ class NavigationBar extends Component {
                     show={this.state.showModal}
                     onHide={() => this.showAndHide()}
                     size="lg"
+                    scrollable={true}
                     aria-labelledby="contained-modal-title-vcenter"
-                    centered >
+                    centered
+                >
                     <Modal.Header closeButton>
-                        <Modal.Title id="contained-modal-title-vcenter">
-                            Sign up
-                    </Modal.Title>
                     </Modal.Header>
-                    <Modal.Body className="justify-content-center">
-                        <SignUpForm show={true} />
-                    </Modal.Body>
+                    {/* <Modal.Body className="justify-content-center"> */}
+                    <SignUpForm show={true} closeButton />
+                    {/* </Modal.Body> */}
                 </Modal>
             </Nav>
         }
