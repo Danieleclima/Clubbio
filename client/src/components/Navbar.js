@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Navbar, Nav } from 'react-bootstrap';
 import '../App.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
-import logo from '../assets/Clubbio_logo_reduced.png'
+import logo from '../assets/Clubbio_logo_xs.png'
 import { checkLoginStatus } from '../actions/User';
 import { connect } from 'react-redux';
 import SignUpForm from '../components/SignupForm';
@@ -58,12 +58,9 @@ class NavigationBar extends Component {
     render() {
         return (
             <Navbar className="Clubbio-color" expand="lg">
-                <Navbar.Brand href="/">
+                <Navbar.Brand href="http://localhost:3000/">
                     <img
                         src={logo}
-                        width="30"
-                        height="30"
-                        className="d-inline-block align-top"
                         alt="Clubbio logo" />
                 </ Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
