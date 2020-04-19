@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Carousel } from 'react-bootstrap';
-import logo from '../assets/Clubbio_logo_cropped.png'
-
+import Maya from '../assets/Mayaclubbio.jpg'
+import '../NightClubPage.css'
 
 export default class NightClub extends Component {
 
@@ -20,7 +20,7 @@ export default class NightClub extends Component {
 
                 <div class="carousel slide carousel-fade nightclub-page-carousel" data-ride="carousel" id="carousel-1">
                     <div class="carousel-inner" role="listbox">
-                        <div class="carousel-item active"><img class="img-fluid w-100 d-block" src="assets/img/Mayaclubbio.jpg" alt="Slide Image"/></div>
+                        <div class="carousel-item active"><img class="img-fluid w-100 d-block" src={Maya} alt="Slide Image"/></div>
                             <div class="carousel-item"><img class="w-100 d-block" src="https://cdn.bootstrapstudio.io/placeholders/1400x800.png" alt="Slide Image"/></div>
                                 <div class="carousel-item"><img class="w-100 d-block" src="https://cdn.bootstrapstudio.io/placeholders/1400x800.png" alt="Slide Image"/></div>
                                 </div>
