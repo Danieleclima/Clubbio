@@ -1,6 +1,6 @@
 import React from 'react';
 import { Container, Row, Col, Carousel } from 'react-bootstrap';
-import Homepagebanner from '../assets/Homepage_banner.jpg'
+import Homepagebanner from '../assets/Mayaclubbio.jpg'
 import '../App.css'
 
 const homepageCarousel = (props) => (

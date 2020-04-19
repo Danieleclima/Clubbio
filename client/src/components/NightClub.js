@@ -5,6 +5,15 @@ import logo from '../assets/Clubbio_logo_cropped.png'
 
 export default class NightClub extends Component {
 
+    constructor(props) {
+        super(props);
+        this.routeParam = props.match.params
+      }
+
+    // renderNightClub = () => {
+    //     debugger    
+    // }
+
     render() {
         return (
             <React.Fragment>
@@ -24,6 +33,7 @@ export default class NightClub extends Component {
                         </Carousel.Caption>
                     </Carousel.Item>
                 </Carousel>
+                
             </React.Fragment>
         )
     }
