@@ -12,6 +12,7 @@ import { faFacebookSquare, faGoogle, faTwitter} from '@fortawesome/free-brands-s
 import { library } from '@fortawesome/fontawesome-svg-core';
 import './App.css';
 
+
 class App extends Component {
 
 render(){
