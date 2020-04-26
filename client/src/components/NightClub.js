@@ -8,7 +8,6 @@ export default class NightClub extends Component {
 
     constructor(props) {
         super(props);
-        debugger
         this.id = props.match.params.id
     }
 

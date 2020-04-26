@@ -4,7 +4,7 @@ import NightClubCard from '../components/NightClubCard'
 import NightClubLoading from '../components/NightClubLoading'
 import { fetchNightClubs } from '../actions/NightClubs';
 import { addUserLocation } from '../actions/User'
-import { Container, Row, Col, CardDeck, Spinner } from 'react-bootstrap';
+import { Container, Row, Col, CardDeck} from 'react-bootstrap';
 import '../App.css';
 import CheckBox from '../components/Checkbox'
 
