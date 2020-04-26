@@ -7,7 +7,6 @@ import '../App.css';
 class NightClubLoading extends Component {
 
     renderContent = () => { 
-        debugger 
             return <Card className="nightclub-loading">
                 <Card.Body className="d-flex justify-content-center align-items-center">
                 <Spinner animation="border" />

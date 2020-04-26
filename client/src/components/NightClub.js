@@ -8,17 +8,13 @@ export default class NightClub extends Component {
 
     constructor(props) {
         super(props);
-        // this.routeParam = props.match.params
+        debugger
+        this.id = props.match.params.id
     }
-
-    // renderNightClub = () => {
-    //     debugger    
-    // }
 
     render() {
         return (
             <React.Fragment>
-
                 <div class="carousel slide carousel-fade nightclub-page-carousel" data-ride="carousel" id="carousel-1">
                     <div class="carousel-inner" role="listbox">
                         <div class="carousel-item active"><img class="img-fluid w-100 d-block" src={Maya} alt="Slide Image"/></div>

@@ -22,7 +22,6 @@ class NightClubCard extends Component {
     }
 
     renderContent = () => {
-        debugger
         if (this.props.nightclub) {
             return <Card>
                 {this.renderImage()}
@@ -36,7 +35,6 @@ class NightClubCard extends Component {
                         emptySymbol={<span className="fa fa-star-o fa-2x empty-star" />}
                         fullSymbol={<FontAwesomeIcon icon="star" size="2x" className="full-star" />}
                         initialRating={this.roundRating(this.props.nightclub.rating, 0.5)}
-
                     />
                 </Card.Body>
                 <Card.Footer>

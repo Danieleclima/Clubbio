@@ -24,7 +24,6 @@ class NightClubs extends Component {
 
   // render NightClubCard component
   renderNightClubs = (nightclubs = this.props.nightclubs) => {
-    debugger
     if (this.state.sortedArray) {
       nightclubs = this.state.sortedArray
     }
@@ -33,7 +32,6 @@ class NightClubs extends Component {
         return <Col className="col-md-4 col-sm-6 my-3"> <NightClubCard nightclub={n} /> </Col>
       })}  </CardDeck> </Row> </Container>
     } else {
-      debugger
       return <Container className="fullview_component" fluid={true}> <Row><CardDeck className="container-fluid">
        <Col className="col-md-4 col-sm-6 my-3"> <NightClubLoading/> </Col>
        <Col className="col-md-4 col-sm-6 my-3"> <NightClubLoading/> </Col>
