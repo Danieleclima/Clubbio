@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
-import { Carousel } from 'react-bootstrap';
 import Maya from '../assets/Mayaclubbio.jpg'
+import bsinit from '../scripts/bs-init'
+import jquery from '../scripts/jquery.min.js'
 import '../NightClubPage.css'
+import Footer from './Footer'
 
 export default class NightClub extends Component {
 
@@ -50,7 +52,8 @@ export default class NightClub extends Component {
                                 </div>
                             </div>
                             <div class="footer-dark">
-                                <footer>
+                            <Footer/>
+                                {/* <footer>
                                     <div class="container">
                                         <div class="row">
                                             <div class="col-sm-6 col-md-3 item">
@@ -77,11 +80,11 @@ export default class NightClub extends Component {
                                         </div>
                                         <p class="copyright">Company Name © 2017</p>
                                     </div>
-                                </footer>
+                                </footer> */}
                             </div>
-                            <script src="assets/js/jquery.min.js"></script>
-                            <script src="assets/bootstrap/js/bootstrap.min.js"></script>
-                            <script src="assets/js/bs-init.js"></script>
+                            <script src={jquery}></script>
+                            {/* <script src="assets/bootstrap/js/bootstrap.min.js"></script> */}
+                            <script src={bsinit}></script>
                 
             </React.Fragment>
         )
