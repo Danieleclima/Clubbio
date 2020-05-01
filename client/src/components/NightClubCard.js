@@ -26,7 +26,7 @@ class NightClubCard extends Component {
             return <Card>
                 {this.renderImage()}
                 <Card.Body>
-                    <Card.Title ><Link to={`/nightclubs/${this.props.nightclub.id}`}>{this.props.nightclub.name} </Link> </Card.Title>
+                    <Card.Title ><Link to={`/nightclubs/${this.props.nightclub.place_id}`}>{this.props.nightclub.name} </Link> </Card.Title>
                     <Card.Text>
                         Some quick example text to build on the card title and make up the bulk of
                         the card's content.

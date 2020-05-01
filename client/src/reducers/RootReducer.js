@@ -19,6 +19,9 @@ function nightClubsReducer(state = {}, action) {
                 return !nightclub.types.includes("lodging")
             })
           return {...state.nightclubs, nightclubs}
+        case 'CURRENT_NIGHTCLUB':
+            let nightclub = action.nightclub
+            return {...state.nightclub, nightclub}      
     default:
         return state
 }}

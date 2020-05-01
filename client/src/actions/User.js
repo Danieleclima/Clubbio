@@ -42,36 +42,6 @@ export const createUser = user => {
     }
 }
 
-// export const createUserfromOmniauth = provider => {
-//     return (dispatch) => {
-//         dispatch({ type: 'START_CREATING_USER' });
-//         // URL corresponding to the relevant Social Network
-//         debugger
-//         // let targetUrl = `http://localhost:3001/users/auth/${provider}`;
-//         fetch(`http://localhost:3001/users/auth/${provider}`, {
-//             method: "GET",
-//             headers: {
-//                 'Access-Control-Allow-Origin': '*',
-//               },
-//               mode: 'cors',
-//               redirect: 'follow'
-//             // credentials: 'include'
-//         })
-//             // returning user from the Rails API
-//             .then(u => {
-//                 debugger
-//                 return u.json()
-//             })
-//             .then(current_user => {
-//                 console.log('c')
-//                 // sending the returned user to the Redux userReducer
-//                 dispatch({ type: 'CREATE_USER', user: current_user })
-//             })
-//             .catch((error) => {
-//                 console.log(error);
-//             });
-//     }
-// }
 
 export const checkLoginStatus = () => {
     debugger

@@ -18,3 +18,20 @@ export function fetchNightClubs(coords) {
 }
 
 
+export function fetchNightClub(id) {
+    return (dispatch) => {
+        if (id){
+        dispatch ({type: 'START_PULLING_NIGHTCLUB'});
+        let proxyUrl = 'https://cors-anywhere.herokuapp.com/';
+        let targetUrl = `https://maps.googleapis.com/maps/api/place/details/json?place_id=${id}fields=name,rating,formatted_phone_number,photo,adr_address&key=AIzaSyDXutd941FQhPL2Nh8upxQZo8rhEAs0Moo`
+        fetch(proxyUrl + targetUrl)
+        .then(res => {
+            return res.json()
+          })
+        .then(nightclub => dispatch({type: 'CURRENT_NIGHTCLUB', nightclub: nightclub.results})) 
+        // .catch(error => {
+        // 
+        //     console.log(error)
+        // })  
+    }}
+}

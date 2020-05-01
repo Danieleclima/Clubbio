@@ -14,6 +14,7 @@ export default class NightClub extends Component {
     }
 
     render() {
+        debugger
         return (
             <React.Fragment>
                 <div class="carousel slide carousel-fade nightclub-page-carousel" data-ride="carousel" id="carousel-1">
