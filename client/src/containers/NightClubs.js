@@ -43,9 +43,6 @@ class NightClubs extends Component {
     }
   }
 
-  componentDidMount() {
-  }
-
   // get location from browser
   getLocation = () => {
     if (navigator.geolocation) {

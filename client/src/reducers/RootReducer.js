@@ -13,15 +13,19 @@ function nightClubsReducer(state = {}, action) {
     
     switch (action.type){
         case 'ADD_NIGHTCLUBS':
+            debugger
             let nightclubs = action.nightclubs
-            // filering the results just to show nightclubs rather than 
+            // filering the results just to show nightclubs rather than hotels
             nightclubs = nightclubs.filter( function (nightclub){
                 return !nightclub.types.includes("lodging")
             })
           return {...state.nightclubs, nightclubs}
         case 'CURRENT_NIGHTCLUB':
+            debugger
             let nightclub = action.nightclub
-            return {...state.nightclub, nightclub}      
+            return {...state.nightclubs, nightclub}
+        case 'START_PULLING_NIGHTCLUB':
+            debugger      
     default:
         return state
 }}
@@ -30,11 +34,9 @@ function userReducer(state = {user: {logged_in: false}}, action){
     let current_user = {}
     switch (action.type){
         case 'ADD_USER_LOCATION':
-            // debugger
             let coords = action.location.coords
             return {...state.user, coords}
-        case 'CREATE_USER':
-            debugger
+        case 'CREATE_USER':    
             current_user = action.user
             state.logged_in = true
             return {...state.user, current_user}

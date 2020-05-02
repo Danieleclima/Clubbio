@@ -1,16 +1,18 @@
 import React, { Component } from 'react';
 import Maya from '../assets/Mayaclubbio.jpg'
-import $ from "jquery"
-// import bsinit from '../scripts/bs-init.js'
-// import jquery from '../scripts/jquery.min.js'
-// import bootstrap from '../scripts/bootstrap.min.js'
 import '../NightClubPage.css'
+import { connect } from 'react-redux';
+import { fetchNightClub } from '../actions/NightClubs';
 
-export default class NightClub extends Component {
+class NightClub extends Component {
 
     constructor(props) {
         super(props);
         this.id = props.match.params.id
+    }
+
+    componentDidMount() {
+        fetchNightClub(this.id)
     }
 
     render() {
@@ -54,3 +56,12 @@ export default class NightClub extends Component {
     }
 }
 
+const mapStateToProps = (state) => {
+    debugger
+    return {
+      nightclub: state.nightclubs.nightclubs,
+      user: state.user
+    }
+  }
+
+export default connect(mapStateToProps, { fetchNightClub })(NightClub);
