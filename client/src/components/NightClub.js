@@ -59,7 +59,7 @@ class NightClub extends Component {
 const mapStateToProps = (state) => {
     debugger
     return {
-      nightclub: state.nightclubs.nightclubs,
+      nightclub: state.nightclubs.nightclub,
       user: state.user
     }
   }

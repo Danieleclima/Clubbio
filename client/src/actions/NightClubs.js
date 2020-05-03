@@ -22,19 +22,17 @@ export function fetchNightClubs(coords) {
 export function fetchNightClub(id) {
     debugger
     // return (dispatch) => {
-    //     debugger
-        // dispatch ({type: 'START_PULLING_NIGHTCLUB'});
-        let proxyUrl = 'https://cors-anywhere.herokuapp.com/';
-        let targetUrl = `https://maps.googleapis.com/maps/api/place/details/json?place_id=${id}&fields=name,rating,formatted_phone_number,photo,adr_address&key=AIzaSyDXutd941FQhPL2Nh8upxQZo8rhEAs0Moo`
-        fetch(proxyUrl + targetUrl)
+    //     dispatch ({type: 'START_PULLING_NIGHTCLUB'});
+        let targetUrl = `http://localhost:3001/nightclub`
+        fetch(targetUrl)
         .then(res => {
             debugger
             return res.json()
           })
         .then(nightclub => {
             debugger
-            return nightclub.result
-            })
+           return nightclub.result
+        })
         .catch(error => {
         
             console.log(error)
