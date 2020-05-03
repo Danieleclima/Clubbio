@@ -8,6 +8,7 @@ export function fetchNightClubs(coords) {
         let targetUrl = `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${coords.latitude},${coords.longitude}&radius=20000&type=night_club&key=AIzaSyDXutd941FQhPL2Nh8upxQZo8rhEAs0Moo`
         fetch(proxyUrl + targetUrl)
         .then(res => {
+            debugger
             return res.json()
           })
         .then(nightclubs => dispatch({type: 'ADD_NIGHTCLUBS', nightclubs: nightclubs.results})) 
@@ -19,22 +20,19 @@ export function fetchNightClubs(coords) {
 }
 
 
-export function fetchNightClub(id) {
+export const fetchClub = id => {
     debugger
-    // return (dispatch) => {
-    //     dispatch ({type: 'START_PULLING_NIGHTCLUB'});
+    return (dispatch) => {
+        if (id){
+        dispatch ({type: 'START_PULLING_NIGHTCLUB'});
         let targetUrl = `http://localhost:3001/nightclub`
         fetch(targetUrl)
         .then(res => {
             debugger
             return res.json()
           })
-        .then(nightclub => {
-            debugger
-           return nightclub.result
-        })
+        .then(nightclub => dispatch({type: 'CURRENT_NIGHTCLUB', nightclubs: nightclub.result}))
         .catch(error => {
-        
             console.log(error)
         })  
-    }
+}}}

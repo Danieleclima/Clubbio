@@ -10,7 +10,7 @@ const rootReducer = combineReducers({
 export default rootReducer
 
 function nightClubsReducer(state = {}, action) {
-    
+    debugger
     switch (action.type){
         case 'ADD_NIGHTCLUBS':
             debugger
@@ -23,9 +23,7 @@ function nightClubsReducer(state = {}, action) {
         case 'CURRENT_NIGHTCLUB':
             debugger
             let nightclub = action.nightclub
-            return {...state.nightclubs, nightclub}
-        case 'START_PULLING_NIGHTCLUB':
-            debugger      
+            return {...state.nightclubs, nightclub}    
     default:
         return state
 }}

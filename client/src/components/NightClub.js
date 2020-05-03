@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Maya from '../assets/Mayaclubbio.jpg'
 import '../NightClubPage.css'
 import { connect } from 'react-redux';
-import { fetchNightClub } from '../actions/NightClubs';
+import { fetchClub } from '../actions/NightClubs';
 
 class NightClub extends Component {
 
@@ -12,7 +12,7 @@ class NightClub extends Component {
     }
 
     componentDidMount() {
-        fetchNightClub(this.id)
+        fetchClub(this.id)
     }
 
     render() {
@@ -64,4 +64,4 @@ const mapStateToProps = (state) => {
     }
   }
 
-export default connect(mapStateToProps, { fetchNightClub })(NightClub);
+export default connect(mapStateToProps, { fetchClub })(NightClub);

@@ -10,9 +10,9 @@ import { Button, Modal, Container, Row, Col } from 'react-bootstrap'
 
 class NavigationBar extends Component {
 
-    componentDidMount() {
-        this.props.checkLoginStatus()
-    }
+    // componentDidMount() {
+    //     this.props.checkLoginStatus()
+    // }
 
     state = {
         showModal: false
