@@ -22,7 +22,7 @@ function nightClubsReducer(state = {}, action) {
           return {...state.nightclubs, nightclubs}
         case 'CURRENT_NIGHTCLUB':
             debugger
-            let nightclub = action.nightclub
+            let nightclub = action.nightclubs
             return {...state.nightclubs, nightclub}    
     default:
         return state

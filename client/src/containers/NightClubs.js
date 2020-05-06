@@ -100,7 +100,7 @@ class NightClubs extends Component {
             </Col>
           </Row>
         </Container>
-        <CheckBox sortByRating={this.sortingNightClubs} />
+        {/* <CheckBox sortByRating={this.sortingNightClubs} /> */}
         {this.renderNightClubs()}
         {this.props.fetchNightClubs(this.props.user.coords)}
       </React.Fragment>

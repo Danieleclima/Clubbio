@@ -9,10 +9,24 @@ class NightClub extends Component {
     constructor(props) {
         super(props);
         this.id = props.match.params.id
+        this.props.fetchClub(this.id)
     }
 
-    componentDidMount() {
-        fetchClub(this.id)
+
+    renderPictures = () => {
+        if (this.props.nightclub) {
+            return  <div class="carousel-inner" role="listbox">
+            <div class="carousel-item active"><img class="img-fluid w-100 d-block" src={`https://maps.googleapis.com/maps/api/place/photo?maxwidth=700&photoreference=${this.props.nightclub.photos[0].photo_reference}&key=AIzaSyDXutd941FQhPL2Nh8upxQZo8rhEAs0Moo`} alt="Slide Image"/></div>
+            </div>
+        } else {
+            return <div class="carousel-inner" role="listbox">
+            <div class="carousel-item active"><img class="img-fluid w-100 d-block" src={Maya} alt="Slide Image"/></div>
+            <div class="carousel-item"><img class="w-100 d-block" src={`https://cdn.bootstrapstudio.io/placeholders/1400x800.png`} alt="Slide Image"/></div>
+            <div class="carousel-item"><img class="w-100 d-block" src={`https://cdn.bootstrapstudio.io/placeholders/1400x800.png`} alt="Slide Image"/></div>
+            </div>
+        }
+
+        
     }
 
     render() {
@@ -20,11 +34,7 @@ class NightClub extends Component {
         return (
             <React.Fragment>
                 <div class="carousel slide carousel-fade nightclub-page-carousel" data-ride="carousel" id="carousel-1">
-                    <div class="carousel-inner" role="listbox">
-                        <div class="carousel-item active"><img class="img-fluid w-100 d-block" src={Maya} alt="Slide Image"/></div>
-                            <div class="carousel-item"><img class="w-100 d-block" src="https://cdn.bootstrapstudio.io/placeholders/1400x800.png" alt="Slide Image"/></div>
-                                <div class="carousel-item"><img class="w-100 d-block" src="https://cdn.bootstrapstudio.io/placeholders/1400x800.png" alt="Slide Image"/></div>
-                                </div>
+                    {this.renderPictures()}
                                 <div><a class="carousel-control-prev" href="#carousel-1" role="button" data-slide="prev"><span class="carousel-control-prev-icon"></span><span class="sr-only">Previous</span></a><a class="carousel-control-next" href="#carousel-1" role="button" data-slide="next"><span class="carousel-control-next-icon"></span><span class="sr-only">Next</span></a></div>
                                 <ol
                                     class="carousel-indicators">

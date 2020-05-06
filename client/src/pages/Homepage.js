@@ -9,6 +9,14 @@ import HomepageCarousel from '../components/HomepageCarousel'
 
 export default class Homepage extends Component {
 
+    componentDidMount(){
+        this.init()
+    }
+
+    init = () => window.FB.api('/me', {fields: 'email'}, {  access_token : 'EAAal5YGLdAIBAK4q6Rx644Y0ojnShFNK3RRDzj9ZAOjKJfZCBr1rZABtAgd5R1ZADgWZBLc0LtNOC34QbYp867l9PADihlbbDGGGvlEoOFBMjEXVZBvGTvYmbHGJZCRIDKHD0F8kVtudkGn27rSs6EA9GpcbHWjxmKG3ARQj5awTeFCSKmzY6Bd' }, function(response) {
+        console.log(response);
+      })
+
     render(){
         return(
             <React.Fragment>
