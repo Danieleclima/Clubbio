@@ -13,7 +13,7 @@ export default class Homepage extends Component {
         this.init()
     }
 
-    init = () => window.FB.api('/me', {fields: 'email'}, {  access_token : 'EAAal5YGLdAIBAK4q6Rx644Y0ojnShFNK3RRDzj9ZAOjKJfZCBr1rZABtAgd5R1ZADgWZBLc0LtNOC34QbYp867l9PADihlbbDGGGvlEoOFBMjEXVZBvGTvYmbHGJZCRIDKHD0F8kVtudkGn27rSs6EA9GpcbHWjxmKG3ARQj5awTeFCSKmzY6Bd' }, function(response) {
+    init = () => window.FB.api('/search?limit=500?type=place&center=51.510067,-0.133869&categories=["FOOD_BEVERAGE"]', {fields: 'name,checkins,website'}, {  access_token : '1871254999757826|MUfFXQFVTJ3LROzREao-Z6ZZbHM' }, function(response) {
         console.log(response);
       })
 
