@@ -10,15 +10,15 @@ const rootReducer = combineReducers({
 export default rootReducer
 
 function nightClubsReducer(state = {}, action) {
-    debugger
+    // debugger
     switch (action.type){
         case 'ADD_NIGHTCLUBS':
             debugger
             let nightclubs = action.nightclubs
             // filering the results just to show nightclubs rather than hotels
-            nightclubs = nightclubs.filter( function (nightclub){
-                return !nightclub.types.includes("lodging")
-            })
+            // nightclubs = nightclubs.filter( function (nightclub){
+            //     return !nightclub.types.includes("lodging")
+            // })
           return {...state.nightclubs, nightclubs}
         case 'CURRENT_NIGHTCLUB':
             debugger

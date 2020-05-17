@@ -4,14 +4,17 @@ export function fetchNightClubs(coords) {
     return (dispatch) => {
         if (coords){
         dispatch ({type: 'START_ADDING_NIGHTCLUBS_REQUEST'});
-        let proxyUrl = 'https://cors-anywhere.herokuapp.com/';
-        let targetUrl = `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${coords.latitude},${coords.longitude}&radius=20000&type=night_club&key=AIzaSyDXutd941FQhPL2Nh8upxQZo8rhEAs0Moo`
-        fetch(proxyUrl + targetUrl)
-        .then(res => {
+       let nightclubs = () => window.FB.api('/search?type=place&limit=150&center=51.510067,-0.133869&fields=name,hours,location,overall_star_rating,single_line_address,cover,description,engagement,phone,price_range,is_permanently_closed,restaurant_services&categories=["FOOD_BEVERAGE"]', {  access_token : '1871254999757826|MUfFXQFVTJ3LROzREao-Z6ZZbHM'}, function(response) {
             debugger
-            return res.json()
+            dispatch({type: 'ADD_NIGHTCLUBS', nightclubs: response})
+            return response
           })
-        .then(nightclubs => dispatch({type: 'ADD_NIGHTCLUBS', nightclubs: nightclubs.results})) 
+          debugger
+        // .then(res => {
+        //     debugger
+        //     return res.json()
+        //   })
+        // .then(nightclubs => dispatch({type: 'ADD_NIGHTCLUBS', nightclubs: nightclubs.results})) 
         // .catch(error => {
         // 
         //     console.log(error)
