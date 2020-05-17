@@ -10,15 +10,6 @@ export function fetchNightClubs(coords) {
             return response
           })
           debugger
-        // .then(res => {
-        //     debugger
-        //     return res.json()
-        //   })
-        // .then(nightclubs => dispatch({type: 'ADD_NIGHTCLUBS', nightclubs: nightclubs.results})) 
-        // .catch(error => {
-        // 
-        //     console.log(error)
-        // })  
     }}
 }
 
