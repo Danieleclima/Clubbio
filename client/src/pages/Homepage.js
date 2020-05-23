@@ -10,12 +10,8 @@ import HomepageCarousel from '../components/HomepageCarousel'
 export default class Homepage extends Component {
 
     componentDidMount(){
-        // this.init()
     }
 
-    // init = () => window.FB.api('/search?type=place&limit=150&center=51.510067,-0.133869&fields=name,hours,location,overall_star_rating,single_line_address,cover,description,engagement,phone,price_range,is_permanently_closed,restaurant_services&categories=["FOOD_BEVERAGE"]', {fields: 'name,hours,location,overall_star_rating,single_line_address,cover,description,engagement,phone,price_range,is_permanently_closed,restaurant_services'}, {  access_token : '1871254999757826|MUfFXQFVTJ3LROzREao-Z6ZZbHM'}, function(response) {
-    //     console.log(response);
-    //   })
 
     render(){
         return(

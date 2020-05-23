@@ -4,7 +4,7 @@ import NightClubCard from '../components/NightClubCard'
 import NightClubLoading from '../components/NightClubLoading'
 import { fetchNightClubs } from '../actions/NightClubs';
 import { addUserLocation } from '../actions/User'
-import { Container, Row, Col, CardDeck} from 'react-bootstrap';
+import { Container, Row, Col, CardDeck } from 'react-bootstrap';
 import '../App.css';
 import CheckBox from '../components/Checkbox'
 
@@ -33,12 +33,12 @@ class NightClubs extends Component {
       })}  </CardDeck> </Row> </Container>
     } else {
       return <Container className="fullview_component" fluid={true}> <Row><CardDeck className="container-fluid">
-       <Col className="col-md-4 col-sm-6 my-3"> <NightClubLoading/> </Col>
-       <Col className="col-md-4 col-sm-6 my-3"> <NightClubLoading/> </Col>
-       <Col className="col-md-4 col-sm-6 my-3"> <NightClubLoading/> </Col>
-       <Col className="col-md-4 col-sm-6 my-3"> <NightClubLoading/> </Col>
-       <Col className="col-md-4 col-sm-6 my-3"> <NightClubLoading/> </Col>
-       <Col className="col-md-4 col-sm-6 my-3"> <NightClubLoading/> </Col>  
+        <Col className="col-md-4 col-sm-6 my-3"> <NightClubLoading /> </Col>
+        <Col className="col-md-4 col-sm-6 my-3"> <NightClubLoading /> </Col>
+        <Col className="col-md-4 col-sm-6 my-3"> <NightClubLoading /> </Col>
+        <Col className="col-md-4 col-sm-6 my-3"> <NightClubLoading /> </Col>
+        <Col className="col-md-4 col-sm-6 my-3"> <NightClubLoading /> </Col>
+        <Col className="col-md-4 col-sm-6 my-3"> <NightClubLoading /> </Col>
     } </CardDeck> </Row> </Container>
     }
   }
@@ -84,6 +84,11 @@ class NightClubs extends Component {
       this.renderNightClubs()
     }
   }
+  // fetch nightclubs from the FB API
+  init = (location) => window.FB.api(`/search?type=place&limit=150&center=51.5104,-0.1301&fields=name,hours,location,overall_star_rating,single_line_address,cover,description,engagement,phone,price_range,is_permanently_closed,restaurant_services&categories=["FOOD_BEVERAGE"]`, { fields: 'name,hours,location,overall_star_rating,single_line_address,cover,description,engagement,phone,price_range,is_permanently_closed,restaurant_services' }, { access_token: '1871254999757826|MUfFXQFVTJ3LROzREao-Z6ZZbHM' }, function (response) {
+    debugger
+    fetchNightClubs(location)
+  })
 
   render() {
     return (
@@ -100,9 +105,9 @@ class NightClubs extends Component {
             </Col>
           </Row>
         </Container>
-        {/* <CheckBox sortByRating={this.sortingNightClubs} /> */}
+        {this.init(this.props.user.coords)}
         {this.renderNightClubs()}
-        {this.props.fetchNightClubs(this.props.user.coords)}
+        {/* {this.props.fetchNightClubs(this.props.user.coords)} */}
       </React.Fragment>
     )
   }
