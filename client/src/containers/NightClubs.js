@@ -86,7 +86,6 @@ class NightClubs extends Component {
   }
   // fetch nightclubs from the FB API
   init = (location) => {
-    debugger
     if (location){
     window.FB.api(`/search?type=place&limit=150&center=${location.latitude},${location.longitude}&fields=name,hours,location,overall_star_rating,single_line_address,cover,description,engagement,phone,price_range,is_permanently_closed,restaurant_services&categories=["FOOD_BEVERAGE"]`, { fields: 'name,hours,location,overall_star_rating,single_line_address,cover,description,engagement,phone,price_range,is_permanently_closed,restaurant_services' }, { access_token: '1871254999757826|MUfFXQFVTJ3LROzREao-Z6ZZbHM' }, function (response) {
       debugger

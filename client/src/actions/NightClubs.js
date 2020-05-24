@@ -1,18 +1,39 @@
 
-export function fetchNightClubs(coords) {
-    debugger
-    return (dispatch) => {
-        if (coords){
-        dispatch ({type: 'START_ADDING_NIGHTCLUBS_REQUEST'});
-     let fb_nightclubs = () => window.FB.api(`/search?type=place&limit=150&center=${coords.latitude},${coords.longitude}&distance=2000&fields=name,hours,location,overall_star_rating,single_line_address,cover,description,engagement,phone,price_range,is_permanently_closed,restaurant_services&categories=["FOOD_BEVERAGE"]`, {  access_token : '1871254999757826|MUfFXQFVTJ3LROzREao-Z6ZZbHM'}, function(response) {
-            console.log(response)
-          })
-          .then(nightclubs => dispatch({type: 'ADD_NIGHTCLUBS', nightclubs: nightclubs}))
-          .catch(error => {
+export function fetchNightClubs(venues) {
+    if (venues){
+        // dispatch ({type: 'START_ADDING_NIGHTCLUBS_REQUEST'});
+        let nightclubs = venues.data.filter(function (nightclub){
             debugger
-            console.log(error)
-        })    
-    }}
+            nightclub.hours.forEach(element => {
+                debugger
+                let sat_opening_time = 0
+                let sat_closing_time = 0
+                if (element.key === "sat_1_open") {
+                    sat_opening_time = element.value.to_i
+                } else if (element.key === "sat_1_close") {
+                    sat_closing_time = element.value.to_i
+                }
+                if (sat_opening_time > 17 && sat_closing_time > 1){
+                    return true
+                } else {
+                    return false
+                }
+            });
+            
+        })
+    }
+    return (dispatch) => {
+
+
+    //  let fb_nightclubs = () => window.FB.api(`/search?type=place&limit=150&center=${coords.latitude},${coords.longitude}&distance=2000&fields=name,hours,location,overall_star_rating,single_line_address,cover,description,engagement,phone,price_range,is_permanently_closed,restaurant_services&categories=["FOOD_BEVERAGE"]`, {  access_token : '1871254999757826|MUfFXQFVTJ3LROzREao-Z6ZZbHM'}, function(response) {
+    //         console.log(response)
+    //       })
+    //       .then(nightclubs => dispatch({type: 'ADD_NIGHTCLUBS', nightclubs: nightclubs}))
+    //       .catch(error => {
+    //         debugger
+    //         console.log(error)
+    //     })    
+    }
 }
 
 
