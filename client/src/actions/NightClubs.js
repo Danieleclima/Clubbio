@@ -3,25 +3,26 @@ export function fetchNightClubs(venues) {
     if (venues){
         // dispatch ({type: 'START_ADDING_NIGHTCLUBS_REQUEST'});
         let nightclubs = venues.data.filter(function (nightclub){
-            debugger
-            nightclub.hours.forEach(element => {
-                debugger
+            if (nightclub.hours){
                 let sat_opening_time = 0
                 let sat_closing_time = 0
+            return nightclub.hours.forEach(element => { 
                 if (element.key === "sat_1_open") {
-                    sat_opening_time = element.value.to_i
+                    sat_opening_time = parseInt(element.value)
                 } else if (element.key === "sat_1_close") {
-                    sat_closing_time = element.value.to_i
+                    sat_closing_time = parseInt(element.value)
                 }
                 if (sat_opening_time > 17 && sat_closing_time > 1){
                     return true
                 } else {
                     return false
                 }
-            });
-            
+            })}    
         })
+        debugger
     }
+    
+
     return (dispatch) => {
 
 
