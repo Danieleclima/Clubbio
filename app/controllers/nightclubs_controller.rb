@@ -13,4 +13,7 @@ class NightclubsController < ApplicationController
 
     end
 
+    def nightclub_params
+        params.require(:venues).permit(:name)
+    end
 end
