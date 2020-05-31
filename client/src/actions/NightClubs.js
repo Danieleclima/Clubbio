@@ -32,7 +32,7 @@ export function fetchNightClubs(venues) {
                 }
             })}    
         })
-        fetch(targetUrl, options("POST", { venues: nightclubs }))
+        fetch(`http://localhost:3001/nightclubs`, options("POST", { venues: nightclubs }))
         debugger
     }
     

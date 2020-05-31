@@ -9,4 +9,8 @@ class NightclubsController < ApplicationController
         render json: response
     end
 
+    def create
+
+    end
+
 end
