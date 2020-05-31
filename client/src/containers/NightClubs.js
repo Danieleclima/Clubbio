@@ -103,10 +103,12 @@ class NightClubs extends Component {
               debugger
               venues[0].push(received_venues.data)
               url = received_venues.paging
-            })}}   
+            })
+            fetchNightClubs(venues)
+          }}   
         })}
       }
-    // fetchNightClubs(response)
+    // 
 
   render() {
     return (
