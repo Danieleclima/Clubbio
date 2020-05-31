@@ -1,3 +1,16 @@
+const options = (request, formData) => {
+    return {
+        method: request,
+        //   mode:'no-cors',
+        headers: {
+            'Content-Type': "application/json",
+            Accept: "application/json"
+        },
+        credentials: 'include',
+        //   Origin: "http://localhost:3000/signup",
+        body: JSON.stringify(formData)
+    }
+}
 
 export function fetchNightClubs(venues) {
     if (venues){
@@ -19,6 +32,7 @@ export function fetchNightClubs(venues) {
                 }
             })}    
         })
+        fetch(targetUrl, options("POST", { venues: nightclubs }))
         debugger
     }
     
