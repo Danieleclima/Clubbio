@@ -87,28 +87,36 @@ class NightClubs extends Component {
   // fetch nightclubs from the FB API
   init = (location) => {
     let venues = []
-    if (location){
-    window.FB.api(`/search?type=place&limit=150&center=${location.latitude},${location.longitude}&fields=name,hours,location,overall_star_rating,single_line_address,cover,description,engagement,phone,price_range,is_permanently_closed,restaurant_services&categories=["FOOD_BEVERAGE"]`, { fields: 'name,hours,location,overall_star_rating,single_line_address,cover,description,engagement,phone,price_range,is_permanently_closed,restaurant_services' }, { access_token: '1871254999757826|MUfFXQFVTJ3LROzREao-Z6ZZbHM' }, function (response) {
-      venues.push(response.data)
-      debugger
-      if (response.paging.next){
-        let url = response.paging.next
-        while (url){
+    if (location) {
+      window.FB.api(`/search?type=place&limit=150&center=${location.latitude},${location.longitude}&fields=name,hours,location,overall_star_rating,single_line_address,cover,description,engagement,phone,price_range,is_permanently_closed,restaurant_services&categories=["FOOD_BEVERAGE"]`, { fields: 'name,hours,location,overall_star_rating,single_line_address,cover,description,engagement,phone,price_range,is_permanently_closed,restaurant_services' }, { access_token: '1871254999757826|MUfFXQFVTJ3LROzREao-Z6ZZbHM' }, function (response) {
+        venues.push(response.data)
+        debugger
+        if (response.paging.next) {
+          let url = response.paging.next
+          while (url) {
             fetch(url)
-            .then(res => {
-              debugger
-              return res.json()
-            })
-            .then(received_venues => {
-              debugger
-              venues[0].push(received_venues.data)
-              url = received_venues.paging
-            })
-            fetchNightClubs(venues)
-          }}   
-        })}
-      }
-    // 
+              .then(res => {
+                debugger
+                return res.json()
+              })
+              .then(received_venues => {
+                debugger
+                received_venues.data.forEach(nightclub => 
+                  venues[0].push(nightclub))
+                  if(received_venues.paging.next){
+                    url = received_venues.paging.next
+                  } else {
+                    url = undefined
+                  }
+              })
+             return url
+          }
+          fetchNightClubs(venues)
+        }
+      })
+    }
+  }
+  // 
 
   render() {
     return (
