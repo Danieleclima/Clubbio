@@ -11,7 +11,8 @@ class NightclubsController < ApplicationController
 
     def create
         nightclub.params.each do |nightclub|
-
+            Nightclub.find_or_create_by(name: nightclub.name) do |venue|
+                
         end
     end
 
