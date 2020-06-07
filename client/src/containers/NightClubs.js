@@ -104,12 +104,11 @@ class NightClubs extends Component {
                 received_venues.data.forEach(nightclub => 
                   venues[0].push(nightclub))
                   if(received_venues.paging.next){
-                    url = received_venues.paging.next
+                   return url = received_venues.paging.next
                   } else {
-                    url = undefined
+                   return url = undefined
                   }
               })
-             return url
           }
           fetchNightClubs(venues)
         }

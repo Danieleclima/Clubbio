@@ -13,7 +13,9 @@ const options = (request, formData) => {
 }
 
 export function fetchNightClubs(venues) {
+    debugger
     if (venues){
+        debugger
         // dispatch ({type: 'START_ADDING_NIGHTCLUBS_REQUEST'});
         let nightclubs = venues.data.filter(function (nightclub){
             if (nightclub.hours){
