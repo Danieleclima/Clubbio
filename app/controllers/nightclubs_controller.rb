@@ -10,7 +10,9 @@ class NightclubsController < ApplicationController
     end
 
     def create
+        nightclub.params.each do |nightclub|
 
+        end
     end
 
     def nightclub_params
