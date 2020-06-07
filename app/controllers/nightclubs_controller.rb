@@ -13,6 +13,8 @@ class NightclubsController < ApplicationController
         nightclub.params.each do |nightclub|
             Nightclub.find_or_create_by(name: nightclub.name) do |venue|
                 venue.address = nightclub.address
+                venue.opening_hours = nightclub.opening_hours
+                venue.description = nightclub.description
             end
         end
     end
