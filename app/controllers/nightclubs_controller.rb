@@ -18,6 +18,7 @@ class NightclubsController < ApplicationController
                 venue.url = nightclub.url
                 venue.opening_hours = nightclub.opening_hours
                 venue.phone = nightclub.phone
+                venue.rating = nightclub.rating
             end
         end
     end
