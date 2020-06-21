@@ -22,7 +22,7 @@ export function fetchNightClubs(venues) {
             if (nightclub.hours){
                 let sat_opening_time = 0
                 let sat_closing_time = 0
-            return nightclub.hours.forEach(element => { 
+            nightclub.hours.forEach(element => { 
                 if (element.key === "sat_1_open") {
                     sat_opening_time = parseInt(element.value)
                 } else if (element.key === "sat_1_close") {
