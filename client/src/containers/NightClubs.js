@@ -93,8 +93,7 @@ class NightClubs extends Component {
         debugger
         if (response.paging.next) {
           let url = response.paging.next
-          while (url) {
-            fetch(url)
+            let fetchData = function(){ fetch(url)
               .then(res => {
                 debugger
                 return res.json()
@@ -108,8 +107,7 @@ class NightClubs extends Component {
                   } else {
                    return url = undefined
                   }
-              })
-          }
+              })}
           fetchNightClubs(venues)
         }
       })
