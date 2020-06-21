@@ -17,7 +17,7 @@ export function fetchNightClubs(venues) {
     if (venues){
         debugger
         // dispatch ({type: 'START_ADDING_NIGHTCLUBS_REQUEST'});
-        let nightclubs = venues.data.filter(function (nightclub){
+        let nightclubs = venues.filter(function (nightclub){
             if (nightclub.hours){
                 let sat_opening_time = 0
                 let sat_closing_time = 0
