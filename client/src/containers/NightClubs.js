@@ -90,16 +90,16 @@ class NightClubs extends Component {
     if (location) {
       window.FB.api(`/search?type=place&limit=150&center=${location.latitude},${location.longitude}&fields=name,hours,location,overall_star_rating,single_line_address,cover,description,engagement,phone,price_range,is_permanently_closed,restaurant_services&categories=["FOOD_BEVERAGE"]`, { fields: 'name,hours,location,overall_star_rating,single_line_address,cover,description,engagement,phone,price_range,is_permanently_closed,restaurant_services' }, { access_token: '1871254999757826|MUfFXQFVTJ3LROzREao-Z6ZZbHM' }, function (response) {
         venues.push(response.data)
-        debugger
+        // debugger
         if (response.paging.next) {
           let url = response.paging.next
             let fetchData = function(){ fetch(url)
               .then(res => {
-                debugger
+                // debugger
                 return res.json()
               })
               .then(received_venues => {
-                debugger
+                // debugger
                 received_venues.data.forEach(nightclub => 
                   venues[0].push(nightclub))
                   if(received_venues.paging){
