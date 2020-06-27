@@ -28,7 +28,7 @@ export function fetchNightClubs(venues) {
                 } else if (element.key === "sat_1_close") {
                     sat_closing_time = parseInt(element.value)
                 }
-                if (sat_opening_time > 12 && sat_closing_time > 0){
+                if (sat_opening_time > 12 && sat_closing_time > 0 && sat_closing_time < 10){
                     debugger
                     results.push(nightclub)
                     return true
