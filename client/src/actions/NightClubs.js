@@ -14,10 +14,10 @@ const options = (request, formData) => {
 
 export function fetchNightClubs(venues) {
     debugger
+    let results = []
     if (venues){
         debugger
         // dispatch ({type: 'START_ADDING_NIGHTCLUBS_REQUEST'});
-        let results = []
         let nightclubs = venues[0].filter(function (nightclub){
             if (nightclub.hours){
                 let sat_opening_time = 0
