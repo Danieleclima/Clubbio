@@ -1,13 +1,11 @@
 const options = (request, formData) => {
     return {
         method: request,
-        //   mode:'no-cors',
         headers: {
             'Content-Type': "application/json",
             Accept: "application/json"
         },
         credentials: 'include',
-        //   Origin: "http://localhost:3000/signup",
         body: JSON.stringify(formData)
     }
 }
@@ -39,7 +37,14 @@ export function fetchNightClubs(venues) {
               
         })
         debugger
-        fetch(`http://localhost:3001/nightclubs`, options("POST", { venues: results }))
+        fetch(`http://localhost:3001/nightclubs`, { 
+        method: "POST",
+        headers: {
+            'Content-Type': "application/json",
+            Accept: "application/json"
+        },
+        credentials: 'include',
+        body: JSON.stringify(results)})
         
     }
     
