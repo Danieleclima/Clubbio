@@ -29,7 +29,7 @@ export function fetchNightClubs(venues) {
                     sat_closing_time = parseInt(element.value)
                 }
                 if (sat_opening_time > 12 && sat_closing_time > 0 && sat_closing_time < 10){
-                    debugger
+                    // debugger
                     results.push(nightclub)
                     return true
                 } else {
@@ -39,7 +39,7 @@ export function fetchNightClubs(venues) {
               
         })
         debugger
-        fetch(`http://localhost:3001/nightclubs`, options("POST", { venues: nightclubs }))
+        fetch(`http://localhost:3001/nightclubs`, options("POST", { venues: results }))
         
     }
     
