@@ -38,12 +38,7 @@ export function fetchNightClubs(venues) {
         })
         debugger
         fetch(`http://localhost:3001/nightclubs`, { 
-        method: "POST",
-        headers: {
-            'Content-Type': "application/json",
-            Accept: "application/json"
-        },
-        credentials: 'include',
+        method: 'post',
         body: JSON.stringify(results)})
         
     }
