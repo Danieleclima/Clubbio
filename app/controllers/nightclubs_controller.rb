@@ -3,6 +3,8 @@ require 'pry'
 
 class NightclubsController < ApplicationController
 
+    skip_before_action :verify_authenticity_token
+
     def nightclub
         id = request.referer.split('/').last
         response = HTTParty.get("https://maps.googleapis.com/maps/api/place/details/json?place_id=#{id}&fields=name,rating,formatted_phone_number,photo,adr_address&key=AIzaSyDXutd941FQhPL2Nh8upxQZo8rhEAs0Moo")
@@ -11,7 +13,7 @@ class NightclubsController < ApplicationController
 
     def create
         binding.pry
-        nightclub.params.each do |nightclub|
+            
             Nightclub.find_or_create_by(name: nightclub.name) do |venue|
                 venue.address = nightclub.address
                 venue.opening_hours = nightclub.opening_hours
@@ -22,10 +24,9 @@ class NightclubsController < ApplicationController
                 venue.rating = nightclub.rating
                 venue.price_range = nightclub.price_range
             end
-        end
     end
 
     def nightclub_params
-        params.require(:venues).permit(:name)
+        params.permit(venues:[:name, :hours => [[:key, :value]], {:location => [:city]}, :overall_star_rating, :single_line_address, :cover, :description, :engagement, :phone, :price_range, :is_permanently_closed, :id]
     end
 end
