@@ -10,22 +10,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_30_223813) do
+ActiveRecord::Schema.define(version: 2020_09_27_165955) do
 
   create_table "nightclubs", force: :cascade do |t|
     t.string "name"
-    t.string "address"
-    t.float "rating"
     t.string "description"
     t.string "url"
     t.string "gid"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "popularity"
-    t.string "opening_hours"
     t.string "phone"
     t.string "engagement"
     t.string "price_range"
+    t.string "single_line_address"
+    t.string "hours"
+    t.string "location"
+    t.boolean "is_permanently_closed"
+    t.string "cover"
+    t.string "restaurant_services"
+    t.float "overall_star_rating"
   end
 
   create_table "reviews", force: :cascade do |t|

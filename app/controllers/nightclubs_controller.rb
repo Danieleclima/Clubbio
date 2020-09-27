@@ -13,20 +13,27 @@ class NightclubsController < ApplicationController
 
     def create
         binding.pry
-            
-            Nightclub.find_or_create_by(name: nightclub.name) do |venue|
-                venue.address = nightclub.address
-                venue.opening_hours = nightclub.opening_hours
-                venue.description = nightclub.description
-                venue.url = nightclub.url
-                venue.opening_hours = nightclub.opening_hours
-                venue.phone = nightclub.phone
-                venue.rating = nightclub.rating
-                venue.price_range = nightclub.price_range
+            nightclubs = nightclub_params
+            nightclubs[:venues].each do |nightclub| 
+             Nightclub.find_or_create_by(name: nightclub[:name], single_line_address: nightclub[:single_line_address]) do |venue|
+               
+                venue.update(overall_star_rating: nightclub[:overall_star_rating], description: nightclub[:description], engagement: nightclub[:engagement], phone: nightclub[:phone], price_range: nightclub[:price_range],is_permanently_closed: nightclub[:is_permanently_closed], hours: nightclub[:hours], location: nightclub[:location], restaurant_services: nightclub[:restaurant_services], cover: nightclub[:cover])
+             end
+                
+                # venue.single_line_address = nightclub[:single_line_address]
+                # venue.hours = nightclub[:hours]
+                # venue.description = nightclub[:description]
+                # venue.url = nightclub.url
+                # venue.phone = nightclub[:phone]
+                # venue.overall_star_rating = nightclub[:overall_star_rating]
+                # venue.price_range = nightclub[:price_range]
+                # venue.engagement = nightclub[:engagement]
+                # venue.location = nightclub[:location]
+                # venue.is_permanently_closed = nightclub[:is_permanently_closed]
             end
     end
 
     def nightclub_params
-        params.permit(venues:[:name, :hours => [[:key, :value]], {:location => [:city]}, :overall_star_rating, :single_line_address, :cover, :description, :engagement, :phone, :price_range, :is_permanently_closed, :id]
+        params.permit(venues:[:name, :overall_star_rating,:single_line_address, :description, :engagement, :phone, :price_range, :is_permanently_closed, :id, {hours: [:key, :value]}, location: {}, cover:{}, engagement:{}, restaurant_services:{}])
     end
 end
