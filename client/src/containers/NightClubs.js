@@ -15,6 +15,7 @@ class NightClubs extends Component {
     this.getLocation()
     this.sortingNightClubs = this.sortingNightClubs.bind(this);
     this.init = this.init.bind(this)
+    // this.init(this.props.user.coords)
   }
 
   state = {
@@ -39,7 +40,7 @@ class NightClubs extends Component {
         <Col className="col-md-4 col-sm-6 my-3"> <NightClubLoading /> </Col>
         <Col className="col-md-4 col-sm-6 my-3"> <NightClubLoading /> </Col>
         <Col className="col-md-4 col-sm-6 my-3"> <NightClubLoading /> </Col>
-    } </CardDeck> </Row> </Container>
+    </CardDeck> </Row> </Container>
     }
   }
 
@@ -86,11 +87,13 @@ class NightClubs extends Component {
   }
   // fetch nightclubs from the FB API
   init = (location) => {
+    debugger
     let venues = []
-    if (location) {
+    let that = this
+    if (location && !this.props.nightclubs) {
       window.FB.api(`/search?type=place&limit=150&center=${location.latitude},${location.longitude}&fields=name,hours,location,overall_star_rating,single_line_address,cover,description,engagement,phone,price_range,is_permanently_closed,restaurant_services&categories=["FOOD_BEVERAGE"]`, { fields: 'name,hours,location,overall_star_rating,single_line_address,cover,description,engagement,phone,price_range,is_permanently_closed,restaurant_services' }, { access_token: '1871254999757826|MUfFXQFVTJ3LROzREao-Z6ZZbHM' }, function (response) {
         venues.push(response.data)
-        // debugger
+        debugger
         if (response.paging.next) {
           let url = response.paging.next
             let fetchData = function(){ fetch(url)
@@ -106,9 +109,11 @@ class NightClubs extends Component {
                    url = received_venues.paging.next
                    fetchData()
                   } else {
-                  fetchNightClubs(venues)
+                    that.props.fetchNightClubs(venues)
                   }
-              })}
+              })
+              
+            }
               fetchData()
         }
       })
@@ -131,6 +136,7 @@ class NightClubs extends Component {
             </Col>
           </Row>
         </Container>
+        {/* {this.init.bind(this)} */}
         {this.init(this.props.user.coords)}
         {this.renderNightClubs()}
         {/* {this.props.fetchNightClubs(this.props.user.coords)} */}
@@ -140,6 +146,7 @@ class NightClubs extends Component {
 }
 
 const mapStateToProps = (state) => {
+  debugger
   return {
     nightclubs: state.nightclubs.nightclubs,
     user: state.user

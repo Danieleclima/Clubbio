@@ -10,9 +10,11 @@ const options = (request, formData) => {
     }
 }
 
-export function fetchNightClubs(venues) {
-    debugger
+export const fetchNightClubs = venues => {
     let results = []
+    return (dispatch) => {
+        debugger
+        dispatch ({type: 'START_PULLING_NIGHTCLUB'});
     if (venues){
         debugger
         // dispatch ({type: 'START_ADDING_NIGHTCLUBS_REQUEST'});
@@ -27,7 +29,7 @@ export function fetchNightClubs(venues) {
                     sat_closing_time = parseInt(element.value)
                 }
                 if (sat_opening_time > 12 && sat_closing_time > 0 && sat_closing_time < 10){
-                    // debugger
+                    
                     results.push(nightclub)
                     return true
                 } else {
@@ -36,7 +38,7 @@ export function fetchNightClubs(venues) {
             })}
               
         })
-        debugger
+        // Passing all the nightclubs that were returned by the FB API to the Rails API
         fetch(`http://localhost:3001/nightclubs`, { 
         method: 'POST',
         headers: {
@@ -44,14 +46,19 @@ export function fetchNightClubs(venues) {
             Accept: "application/json"
           },
         body: JSON.stringify({venues:results})})
+        .then(res => {
+            debugger
+            return res.json()
+          })
+        .then(nightclub => dispatch({type: 'ADD_NIGHTCLUBS', nightclubs: nightclub}))
         .catch(error => {
             console.log(error)
         })
         
-    }
+    }}
     
 
-    return (dispatch) => {
+    // return (dispatch) => {
 
 
     //  let fb_nightclubs = () => window.FB.api(`/search?type=place&limit=150&center=${coords.latitude},${coords.longitude}&distance=2000&fields=name,hours,location,overall_star_rating,single_line_address,cover,description,engagement,phone,price_range,is_permanently_closed,restaurant_services&categories=["FOOD_BEVERAGE"]`, {  access_token : '1871254999757826|MUfFXQFVTJ3LROzREao-Z6ZZbHM'}, function(response) {
@@ -62,7 +69,7 @@ export function fetchNightClubs(venues) {
     //         debugger
     //         console.log(error)
     //     })    
-    }
+    // }
 }
 
 

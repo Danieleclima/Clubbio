@@ -16,9 +16,11 @@ function nightClubsReducer(state = {}, action) {
             debugger
             let nightclubs = action.nightclubs
             // filering the results just to show nightclubs rather than hotels
-            // nightclubs = nightclubs.filter( function (nightclub){
-            //     return !nightclub.types.includes("lodging")
-            // })
+            nightclubs = nightclubs.filter( function (nightclub){
+                return !nightclub.is_permanently_closed
+                // return !nightclub.types.includes("lodging")
+            })
+            debugger
           return {...state.nightclubs, nightclubs}
         case 'CURRENT_NIGHTCLUB':
             debugger

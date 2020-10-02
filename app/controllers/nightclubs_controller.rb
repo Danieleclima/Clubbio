@@ -1,5 +1,7 @@
 require 'httparty'
 require 'pry'
+require 'json'
+require 'ostruct'
 
 class NightclubsController < ApplicationController
 
@@ -13,24 +15,17 @@ class NightclubsController < ApplicationController
 
     def create
         binding.pry
-            nightclubs = nightclub_params
-            nightclubs[:venues].each do |nightclub| 
-             Nightclub.find_or_create_by(name: nightclub[:name], single_line_address: nightclub[:single_line_address]) do |venue|
-               
+            current_clubs = []
+            nightclubs = JSON.parse(nightclub_params.to_json)
+            nightclubs[:venues].each do |nightclub|
+                # this method will find the nightclub on the db, if it already exists, otherwise it will create one with the name and address and then update it.
+             list = Nightclub.find_or_create_by(name: nightclub[:name], single_line_address: nightclub[:single_line_address]) do |venue|
                 venue.update(overall_star_rating: nightclub[:overall_star_rating], description: nightclub[:description], engagement: nightclub[:engagement], phone: nightclub[:phone], price_range: nightclub[:price_range],is_permanently_closed: nightclub[:is_permanently_closed], hours: nightclub[:hours], location: nightclub[:location], restaurant_services: nightclub[:restaurant_services], cover: nightclub[:cover])
              end
-                
-                # venue.single_line_address = nightclub[:single_line_address]
-                # venue.hours = nightclub[:hours]
-                # venue.description = nightclub[:description]
-                # venue.url = nightclub.url
-                # venue.phone = nightclub[:phone]
-                # venue.overall_star_rating = nightclub[:overall_star_rating]
-                # venue.price_range = nightclub[:price_range]
-                # venue.engagement = nightclub[:engagement]
-                # venue.location = nightclub[:location]
-                # venue.is_permanently_closed = nightclub[:is_permanently_closed]
+             current_clubs.push(list)
             end
+            binding.pry
+        render json: current_clubs.uniq
     end
 
     def nightclub_params
