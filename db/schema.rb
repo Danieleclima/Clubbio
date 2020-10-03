@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_27_165955) do
+ActiveRecord::Schema.define(version: 2020_10_03_155459) do
 
   create_table "nightclubs", force: :cascade do |t|
     t.string "name"
@@ -21,13 +21,13 @@ ActiveRecord::Schema.define(version: 2020_09_27_165955) do
     t.datetime "updated_at", null: false
     t.integer "popularity"
     t.string "phone"
-    t.string "engagement"
+    t.text "engagement"
     t.string "price_range"
     t.string "single_line_address"
-    t.string "hours"
-    t.string "location"
+    t.text "hours"
+    t.text "location"
     t.boolean "is_permanently_closed"
-    t.string "cover"
+    t.text "cover"
     t.string "restaurant_services"
     t.float "overall_star_rating"
   end
